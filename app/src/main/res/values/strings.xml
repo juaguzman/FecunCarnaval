@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">FecunCarnaval</string>
+    <string name="facebook_app_id">964526296921840</string>
+    <string name="User">User ID</string>
+    <string name="token">Auth Token:</string>
+
+    <string name="title_activity_inicio">inicio</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">FESTUM</string>
+</resources>
