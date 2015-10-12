@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onSuccess(LoginResult loginResult)
             {
-
+                ejecutar();
             }
 
             @Override
@@ -70,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
         if(AccessToken.getCurrentAccessToken()!=null)
         {
             txtFbStatus.setText("Session iniciada");
-            Intent i = new Intent(this, Main2ActivityCatego.class);
+            Intent i = new Intent(this, Main2Activity.class);
             startActivity(i);
         }
 
@@ -109,7 +109,7 @@ public class MainActivity extends AppCompatActivity {
         if(AccessToken.getCurrentAccessToken()!=null)
         {
             txtFbStatus.setText("Session iniciada");
-            Intent i = new Intent(this, Main2ActivityCatego.class);
+            Intent i = new Intent(this, Main2Activity.class);
             startActivity(i);
         }
     }

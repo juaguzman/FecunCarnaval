@@ -21,23 +21,26 @@ import java.io.IOException;
 import java.net.URL;
 
 
-public class Main2ActivityCatego extends AppCompatActivity {
+public class Main2ActivityCatego extends AppCompatActivity
+{
 
-    private ProfilePictureView profilePictureView;
+
+    //private ProfilePictureView profilePictureView;
     private String id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
+
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main2_activity_catego);
         FacebookSdk.sdkInitialize(getApplicationContext());
         if (AccessToken.getCurrentAccessToken() == null) {
             Intent i = new Intent(this, MainActivity.class);
             startActivity(i);
         }
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main2_activity_catego);
-        profilePictureView = (ProfilePictureView) findViewById(R.id.friendProfilePicture);
-        profilePictureView.setProfileId(darID());
+       // profilePictureView = (ProfilePictureView) findViewById(R.id.friendProfilePicture);
+        //profilePictureView.setProfileId(darID());
 
     }
 
