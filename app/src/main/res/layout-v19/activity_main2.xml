@@ -2,13 +2,14 @@
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/fondopg1">
 
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/imageButton3"
-        android:layout_alignTop="@+id/imageButton2"
+        android:id="@+id/imgBtn1"
+        android:layout_alignTop="@+id/imgBtn2"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="64dp"
         android:background="@drawable/btns1"
@@ -18,29 +19,14 @@
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/imageButton2"
+        android:id="@+id/imgBtn2"
         android:background="@drawable/btns2"
         android:contentDescription="@string/btnfm"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="40dp"
-        android:layout_below="@+id/ProfilePicture"
-        android:layout_alignStart="@+id/imageButton3" />
+        android:layout_marginBottom="127dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/imgBtn1" />
 
-    <com.facebook.login.widget.ProfilePictureView
-        android:id="@+id/ProfilePicture"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="5sp"
-        android:layout_gravity="center_horizontal"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/profileImageView"
-        android:layout_gravity="center_horizontal"
-        android:layout_alignTop="@+id/ProfilePicture"
-        android:layout_alignStart="@+id/ProfilePicture" />
 
 </RelativeLayout>

@@ -38,7 +38,7 @@ public class MainActivityFamilia extends Activity
         String url = "http://192.168.0.14/Festum/getPrograma.php";
 
         RequestParams parametros = new RequestParams();
-        parametros.put("Evento",1);
+        parametros.put("fecha","2015-12-28");
 
         client.post(url, parametros, new AsyncHttpResponseHandler() {
             @Override
@@ -72,7 +72,7 @@ public class MainActivityFamilia extends Activity
         {
             JSONArray jsonArray = new JSONArray(response);
             String texto;
-            String Texto2;
+
             for (int i=0; i<jsonArray.length();i++)
             {
                 texto=jsonArray.getJSONObject(i).getString("evento") + "\n " +
