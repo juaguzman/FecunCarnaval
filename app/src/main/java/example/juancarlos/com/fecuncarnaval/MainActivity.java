@@ -51,13 +51,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onSuccess(LoginResult loginResult)
             {
-                info.setText(R.string.User
-                        + loginResult.getAccessToken().getUserId()
-                        + "\n" + R.string.token
-                        + loginResult.getAccessToken().getToken());
-
-
-                txtFbStatus.setText("Session iniciada");
 
             }
 
@@ -73,11 +66,12 @@ public class MainActivity extends AppCompatActivity {
         });
 
         txtFbStatus = (TextView) this.findViewById(R.id.txtFbStatus);
+
         if(AccessToken.getCurrentAccessToken()!=null)
         {
             txtFbStatus.setText("Session iniciada");
-            //Intent i = new Intent(this, inicio.class);
-            //startActivity(i);
+            Intent i = new Intent(this, Main2ActivityCatego.class);
+            startActivity(i);
         }
 
     }
@@ -95,6 +89,7 @@ public class MainActivity extends AppCompatActivity {
         super.onResume();
         // Logs 'install' and 'app activate' App Events.
         AppEventsLogger.activateApp(this);
+        ejecutar();
 
     }
 
@@ -105,13 +100,18 @@ public class MainActivity extends AppCompatActivity {
 
         // Logs 'app deactivate' App Event.
         AppEventsLogger.deactivateApp(this);
+        ejecutar();
 
     }
 
     public void ejecutar()
     {
-        //Intent i = new Intent(this, inicio.class);
-        //startActivity(i);
+        if(AccessToken.getCurrentAccessToken()!=null)
+        {
+            txtFbStatus.setText("Session iniciada");
+            Intent i = new Intent(this, Main2ActivityCatego.class);
+            startActivity(i);
+        }
     }
 
 
