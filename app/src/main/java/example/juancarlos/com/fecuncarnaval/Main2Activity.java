@@ -3,6 +3,7 @@ package example.juancarlos.com.fecuncarnaval;
 
 
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
@@ -10,6 +11,8 @@ import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 
 
@@ -22,10 +25,10 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 
-public class Main2Activity extends AppCompatActivity {
+public class Main2Activity extends AppCompatActivity implements View.OnClickListener {
 
 
-
+private ImageButton btn1;
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -33,6 +36,8 @@ public class Main2Activity extends AppCompatActivity {
         FacebookSdk.sdkInitialize(getApplicationContext());
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
+        ImageButton btn1 = (ImageButton) findViewById(R.id.imageButton2);
+        btn1.setOnClickListener(this);
         if (android.os.Build.VERSION.SDK_INT > 9) {
             StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
             StrictMode.setThreadPolicy(policy);
@@ -63,6 +68,13 @@ public class Main2Activity extends AppCompatActivity {
         }
 
         return newLocation;
+    }
+
+    @Override
+    public void onClick(View v)
+    {
+        Intent i = new Intent(this, MainFamActivity.class);
+        startActivity(i);
     }
 
     private class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {

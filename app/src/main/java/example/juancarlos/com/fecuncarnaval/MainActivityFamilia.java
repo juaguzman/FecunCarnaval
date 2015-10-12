@@ -35,7 +35,7 @@ public class MainActivityFamilia extends Activity
     public void obtDatos()
     {
         AsyncHttpClient client = new AsyncHttpClient();
-        String url = "http://192.168.1.143/mostrarPrograma.php";
+        String url = "http://192.168.0.14/Festum/getPrograma.php";
 
         RequestParams parametros = new RequestParams();
         parametros.put("Evento",1);
@@ -72,13 +72,13 @@ public class MainActivityFamilia extends Activity
         {
             JSONArray jsonArray = new JSONArray(response);
             String texto;
+            String Texto2;
             for (int i=0; i<jsonArray.length();i++)
             {
-                texto=jsonArray.getJSONObject(i).getString("Evento") + " "+
-                        jsonArray.getJSONObject(i).getString("Descripcion") + " "+
-                        jsonArray.getJSONObject(i).getString("Lugar") + " "+
-                        jsonArray.getJSONObject(i).getString("Hora inicio") + " "+
-                        jsonArray.getJSONObject(i).getString("Hora Fin") + " ";
+                texto=jsonArray.getJSONObject(i).getString("evento") + "\n " +
+                        jsonArray.getJSONObject(i).getString("horaInicio") + "-"+
+                        jsonArray.getJSONObject(i).getString("horaFin") + " ";
+
                 listado.add(texto);
 
             }
