@@ -8,4 +8,6 @@
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">FESTUM</string>
     <string name="friendProfilePicture">Foto de Perfil</string>
+    <string name="btn">boton amigos</string>
+    <string name="btnfm">boton famili</string>
 </resources>
