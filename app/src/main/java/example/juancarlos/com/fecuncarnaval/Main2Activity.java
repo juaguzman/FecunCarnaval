@@ -4,31 +4,21 @@ package example.juancarlos.com.fecuncarnaval;
 
 
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.os.AsyncTask;
-import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 
 
 import com.facebook.FacebookSdk;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
 
 
 public class Main2Activity extends AppCompatActivity implements View.OnClickListener {
 
 
-private ImageButton btn1;
+private ImageButton imgBtn2;
+private ImageButton imgBtn1;
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -36,73 +26,34 @@ private ImageButton btn1;
         FacebookSdk.sdkInitialize(getApplicationContext());
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
-        ImageButton btn1 = (ImageButton) findViewById(R.id.imageButton2);
-        btn1.setOnClickListener(this);
-        if (android.os.Build.VERSION.SDK_INT > 9) {
-            StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
-            StrictMode.setThreadPolicy(policy);
-        }
 
+        imgBtn2 = (ImageButton) findViewById(R.id.imgBtn2);
+        imgBtn2.setOnClickListener(this);
 
-
-        String imgurl = getUrlFacebookUserAvatar("http://graph.facebook.com/100000351746269/picture?type=large");
-        new DownloadImageTask((ImageView) findViewById(R.id.profileImageView))
-                .execute(imgurl);
+        imgBtn1 = (ImageButton) findViewById(R.id.imgBtn1);
+        imgBtn1.setOnClickListener(this);
 
 
     }
 
-    public static String getUrlFacebookUserAvatar(String name_or_idUser )
-    {
-        String address = "http://graph.facebook.com/"+name_or_idUser+"/picture";
-        URL url;
-        String newLocation = null;
-        try {
-            url = new URL(address);
-            HttpURLConnection.setFollowRedirects(false); //Do _not_ follow redirects!
-            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-            newLocation = connection.getHeaderField("Location");
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
 
-        return newLocation;
-    }
 
     @Override
     public void onClick(View v)
     {
-        Intent i = new Intent(this, MainFamActivity.class);
-        startActivity(i);
-    }
-
-    private class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {
-        ImageView bmImage;
-
-        public DownloadImageTask(ImageView bmImage) {
-            this.bmImage = bmImage;
-        }
-
-        protected Bitmap doInBackground(String... urls) {
-            String urldisplay = urls[0];
-            Bitmap mIcon11 = null;
-            try {
-                InputStream in = new java.net.URL(urldisplay).openStream();
-                mIcon11 = BitmapFactory.decodeStream(in);
-            } catch (Exception e) {
-                Log.e("Error", " " + e.getMessage());
-                e.printStackTrace();
-            }
-            return mIcon11;
-        }
-
-        protected void onPostExecute(Bitmap result)
+        switch (v.getId())
         {
-            bmImage.setImageBitmap(result);
+            case (R.id.imgBtn2):
+                Intent i = new Intent(this, MainFamActivity.class);
+                startActivity(i);
+            break;
+            case (R.id.imgBtn1):
+                Intent j = new Intent(this, MainActivitydAmigos.class);
+                startActivity(j);
+            break;
+
         }
     }
-
 
 
 }

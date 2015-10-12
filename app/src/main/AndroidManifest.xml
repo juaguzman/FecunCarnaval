@@ -39,6 +39,8 @@
 
         <activity android:name=".MainFamActivity" >
         </activity>
+        <activity android:name=".MainActivitydAmigos" >
+        </activity>
     </application>
 
 </manifest>
