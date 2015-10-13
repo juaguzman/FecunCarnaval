@@ -3,7 +3,7 @@ package example.juancarlos.com.fecuncarnaval;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class MainActivitydAmigos extends AppCompatActivity {
+public class MainAmActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -24,18 +24,24 @@ import cz.msebera.android.httpclient.Header;
 public class MainActivityFamilia extends Activity
 {
     ListView listado;
+    private String fechas;
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_familia);
         listado=(ListView) findViewById(R.id.listView);
         obtDatos();
+
     }
 
     public void obtDatos()
     {
+        Bundle bundle = getIntent().getExtras();
+        fechas = bundle.getString("fecha");
+
         AsyncHttpClient client = new AsyncHttpClient();
-        String url = "http://192.168.0.14/Festum/getPrograma.php";
+        String url = "http://192.168.0.14/Festum/getProgramad.php?fecha="+fechas;
 
         RequestParams parametros = new RequestParams();
         parametros.put("fecha","2015-12-28");

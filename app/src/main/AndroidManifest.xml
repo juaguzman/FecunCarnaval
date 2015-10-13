@@ -39,7 +39,9 @@
 
         <activity android:name=".MainFamActivity" >
         </activity>
-        <activity android:name=".MainActivitydAmigos" >
+        <activity android:name=".MainAmActivity" >
+        </activity>
+        <activity android:name=".MainActivityAmigos" >
         </activity>
     </application>
 

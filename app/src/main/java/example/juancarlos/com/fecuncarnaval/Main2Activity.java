@@ -17,8 +17,8 @@ import com.facebook.FacebookSdk;
 public class Main2Activity extends AppCompatActivity implements View.OnClickListener {
 
 
-private ImageButton imgBtn2;
-private ImageButton imgBtn1;
+private ImageButton imgBtnF;
+private ImageButton imgBtnA;
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -27,11 +27,11 @@ private ImageButton imgBtn1;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
 
-        imgBtn2 = (ImageButton) findViewById(R.id.imgBtn2);
-        imgBtn2.setOnClickListener(this);
+        imgBtnF = (ImageButton) findViewById(R.id.imgBtnF);
+        imgBtnF.setOnClickListener(this);
 
-        imgBtn1 = (ImageButton) findViewById(R.id.imgBtn1);
-        imgBtn1.setOnClickListener(this);
+        imgBtnA = (ImageButton) findViewById(R.id.imgBtnA);
+        imgBtnA.setOnClickListener(this);
 
 
     }
@@ -43,12 +43,12 @@ private ImageButton imgBtn1;
     {
         switch (v.getId())
         {
-            case (R.id.imgBtn2):
+            case (R.id.imgBtnF):
                 Intent i = new Intent(this, MainFamActivity.class);
                 startActivity(i);
             break;
-            case (R.id.imgBtn1):
-                Intent j = new Intent(this, MainActivitydAmigos.class);
+            case (R.id.imgBtnA):
+                Intent j = new Intent(this, MainAmActivity.class);
                 startActivity(j);
             break;
 
