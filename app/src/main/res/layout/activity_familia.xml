@@ -2,8 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="600dp"
-    android:weightSum="1"
-    android:background="@drawable/pag4">
+    android:weightSum="1">
 
     <ListView
         android:layout_width="match_parent"
@@ -18,6 +17,23 @@
         android:overScrollHeader="#c50505"
         android:overScrollFooter="@drawable/filofil" />
 
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:id="@+id/imageView2"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:background="@drawable/filofil" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imgBtnVot"
+        android:background="@drawable/btngrande01"
+        android:layout_alignBottom="@+id/imageView2"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="5dp" />
+
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -25,14 +41,7 @@
         android:background="@drawable/btnnoticias"
         android:layout_marginStart="43dp"
         android:layout_alignParentStart="true"
-        android:layout_above="@+id/listView" />
-
-    <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/imageButtonCal"
-        android:background="@drawable/btngrande01"
-        android:layout_alignBottom="@+id/imageButtonN"
-        android:layout_centerHorizontal="true" />
+        android:layout_above="@+id/listView"
+        android:layout_marginBottom="10dp" />
 
 </RelativeLayout>

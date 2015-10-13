@@ -33,9 +33,7 @@ public class MainAmActivity extends AppCompatActivity implements View.OnClickLis
              startActivity(j);
              break;
          case R.id.imageButtonVA:
-             Intent r = new Intent(this, MainVotacion.class);
-             r.putExtra("fecha", "2015-12-30");
-             startActivity(r);
+
              break;
 
      }

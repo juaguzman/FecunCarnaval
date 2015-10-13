@@ -11,36 +11,33 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme" >
-
         <activity android:name=".MainActivity" >
             <intent-filter>
-                <activity android:screenOrientation="landscape" />
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name="com.facebook.FacebookActivity"
             android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
             android:label="@string/app_name"
+            android:screenOrientation="userPortrait"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <activity android:name=".Main2Activity"  >
 
-        <activity android:name=".Main2Activity" >
-            <activity android:screenOrientation="landscape" />
         </activity>
-
-        <activity android:name=".MainActivityFamilia" >
-            <activity android:screenOrientation="landscape" />
+        <activity
+            android:name=".MainActivityFamilia"
+            android:screenOrientation="locked" >
         </activity>
-
         <activity android:name=".MainFamActivity" >
         </activity>
         <activity android:name=".MainAmActivity" >
         </activity>
         <activity android:name=".MainActivityAmigos" >
         </activity>
-        <activity android:name=".MainVotacion" >
+        <activity android:name=".MainActivity_votacion" >
         </activity>
 
         <meta-data

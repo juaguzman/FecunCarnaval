@@ -28,6 +28,7 @@ public class MainActivityFamilia extends Activity implements View.OnClickListene
 
     private ImageButton imageButton;
 
+    private ImageButton imgBtnVot;
     ListView listado;
     String fechass;
 
@@ -35,6 +36,8 @@ public class MainActivityFamilia extends Activity implements View.OnClickListene
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_familia);
+        imgBtnVot = (ImageButton) findViewById(R.id.imgBtnVot);
+        imgBtnVot.setOnClickListener(this);
         listado=(ListView) findViewById(R.id.listView);
         obtDatos();
 
@@ -116,7 +119,9 @@ public class MainActivityFamilia extends Activity implements View.OnClickListene
     {
         switch (v.getId())
         {
-            case (R.id.imageButtonN):
+            case (R.id.imgBtnVot):
+                Intent k = new Intent(this, MainActivity_votacion.class);
+                startActivity(k);
 
                 break;
         }
