@@ -19,7 +19,15 @@
         android:id="@+id/imageButtonN"
         android:background="@drawable/btnnoticias"
         android:layout_marginStart="43dp"
-        android:layout_above="@+id/listView"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_above="@+id/listView" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageButtonCal"
+        android:background="@drawable/btv01"
+        android:layout_alignTop="@+id/imageButtonN"
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>
