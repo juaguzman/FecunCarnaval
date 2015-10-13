@@ -8,9 +8,16 @@ import android.widget.ImageButton;
 
 public class MainFamActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private ImageButton
-            imgBtn28;
+
+    private ImageButton imgBtn28;
     private ImageButton imgBtn29;
+    private ImageButton imgBtn30;
+    private ImageButton imgBtn31;
+    private ImageButton imgBtn2;
+    private ImageButton imgBtn3;
+    private ImageButton imgBtn4;
+    private ImageButton imgBtn5;
+    private ImageButton imgBtn6;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,6 +27,20 @@ public class MainFamActivity extends AppCompatActivity implements View.OnClickLi
         imgBtn28.setOnClickListener(this);
         imgBtn29 = (ImageButton) findViewById(R.id.imgBtn29);
         imgBtn29.setOnClickListener(this);
+        imgBtn30 = (ImageButton) findViewById(R.id.imgBtn30);
+        imgBtn30.setOnClickListener(this);
+        imgBtn31 = (ImageButton) findViewById(R.id.imgBtn31);
+        imgBtn31.setOnClickListener(this);
+        imgBtn2 = (ImageButton) findViewById(R.id.imgBtn2);
+        imgBtn2.setOnClickListener(this);
+        imgBtn3 = (ImageButton) findViewById(R.id.imgBtn3);
+        imgBtn3.setOnClickListener(this);
+        imgBtn4 = (ImageButton) findViewById(R.id.imgBtn4);
+        imgBtn4.setOnClickListener(this);
+        imgBtn5 = (ImageButton) findViewById(R.id.imgBtn5);
+        imgBtn5.setOnClickListener(this);
+        imgBtn6 = (ImageButton) findViewById(R.id.imgBtn6);
+        imgBtn6.setOnClickListener(this);
     }
 
     @Override

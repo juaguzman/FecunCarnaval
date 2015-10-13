@@ -50,7 +50,7 @@ public class MainActivityFamilia extends Activity implements View.OnClickListene
         String url = "http://192.168.0.14/Festum/getProgramad.php?fecha="+fechass;
 
         RequestParams parametros = new RequestParams();
-        parametros.put("fecha","2015-12-28");
+        parametros.put("fecha",fechass.toString());
 
         client.post(url, parametros, new AsyncHttpResponseHandler() {
             @Override
@@ -58,8 +58,6 @@ public class MainActivityFamilia extends Activity implements View.OnClickListene
                 if (statusCode == 200) {
                     //llamar a la funcion
                     CargarLista(obbDatosJSON(new String(responseBody)));
-
-
                 }
             }
 

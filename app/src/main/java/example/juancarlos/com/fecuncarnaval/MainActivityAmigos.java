@@ -20,6 +20,7 @@ public class MainActivityAmigos extends AppCompatActivity {
 
     private ImageButton imgButton;
     ListView listado;
+    String fechass;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +34,8 @@ public class MainActivityAmigos extends AppCompatActivity {
 
     public void obtDatos()
     {
+        Bundle bundle=getIntent().getExtras();
+        fechass = bundle.getString("fecha");
         AsyncHttpClient client = new AsyncHttpClient();
         String url = "http://192.168.0.14/Festum/getPrograma.php";
 
