@@ -20,7 +20,7 @@ public class MainFamActivity extends AppCompatActivity implements View.OnClickLi
     private ImageButton imgBtn6;
 
     private ImageButton imgbtnVot;
-    private ImageButton imgbtnNo;
+    private ImageButton imgbtnN;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,8 +49,8 @@ public class MainFamActivity extends AppCompatActivity implements View.OnClickLi
         imgbtnVot = (ImageButton) findViewById(R.id.imgBtnVot);
         imgbtnVot.setOnClickListener(this);
 
-        imgbtnNo = (ImageButton) findViewById(R.id.imgBtnN);
-        imgbtnNo.setOnClickListener(this);
+        imgbtnN = (ImageButton) findViewById(R.id.imgBtnN);
+        imgbtnN.setOnClickListener(this);
 
 
     }
@@ -83,7 +83,7 @@ public class MainFamActivity extends AppCompatActivity implements View.OnClickLi
             case R.id.imgBtn2:
 
                 Intent p = new Intent(this, MainActivityFamilia.class);
-                p.putExtra("fecha", "201-01-02");
+                p.putExtra("fecha", "2016-01-02");
                 startActivity(p);
                 break;
             case R.id.imgBtn3:
@@ -117,7 +117,7 @@ public class MainFamActivity extends AppCompatActivity implements View.OnClickLi
                 startActivity(k);
                 break;
 
-            case R.id.imgbtnNo:
+            case R.id.imgBtnN:
 
                 Intent no = new Intent(this, MainActivityNoticias.class);
                 startActivity(no);

@@ -25,21 +25,6 @@ public class MainActivity_votacion extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_activity_votacion);
 
-        final RatingBar ratingBar = (RatingBar)findViewById(R.id.ratingBar);
-
-        ratingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
-            @Override
-            public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
-                if (rating>0)
-                {
-                    Toast.makeText(MainActivity_votacion.this, "Valor" + String.valueOf(rating), Toast.LENGTH_LONG).show();
-                }
-                else
-                {
-                    Toast.makeText(MainActivity_votacion.this, "Inserte un valor"+ String.valueOf(rating), Toast.LENGTH_LONG).show();
-                }
-            }
-        });
 
         list = (ListView) findViewById(R.id.list);
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -94,7 +79,7 @@ public class MainActivity_votacion extends AppCompatActivity {
         {
             case 1:
 
-            Intent a = new Intent(this, MainActivity.class);
+            Intent a = new Intent(this, MainActivityFtoVt.class);
             a.putExtra("id", ids);
             startActivity(a);
             break;

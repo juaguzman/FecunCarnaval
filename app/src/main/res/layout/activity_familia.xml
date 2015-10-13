@@ -14,8 +14,8 @@
         android:cacheColorHint="#f3e414"
         android:clickable="true"
         android:divider="@drawable/list_div"
-        android:overScrollHeader="#c50505"
-        android:overScrollFooter="@drawable/filofil" />
+        android:overScrollFooter="#67552e"
+        android:overScrollHeader="#67552e" />
 
     <ImageView
         android:layout_width="wrap_content"
