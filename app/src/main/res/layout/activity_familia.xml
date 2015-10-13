@@ -26,8 +26,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/imageButtonCal"
-        android:background="@drawable/btv01"
-        android:layout_alignTop="@+id/imageButtonN"
+        android:background="@drawable/btngrande01"
+        android:layout_alignBottom="@+id/imageButtonN"
         android:layout_centerHorizontal="true" />
 
 </RelativeLayout>
