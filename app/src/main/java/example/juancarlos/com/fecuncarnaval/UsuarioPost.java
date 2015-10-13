@@ -1,9 +1,10 @@
 package example.juancarlos.com.fecuncarnaval;
 
-import android.app.Activity;
+
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
-import android.widget.EditText;
+import android.support.v7.app.AppCompatActivity;
+
 
 import com.facebook.AccessToken;
 import com.facebook.GraphRequest;
@@ -24,7 +25,7 @@ import cz.msebera.android.httpclient.client.methods.HttpPost;
 import cz.msebera.android.httpclient.impl.client.DefaultHttpClient;
 import cz.msebera.android.httpclient.message.BasicNameValuePair;
 
-public class MainActivityUsuarui extends Activity
+public class UsuarioPost extends AppCompatActivity
 {
 
     private String nombre;
@@ -37,40 +38,21 @@ public class MainActivityUsuarui extends Activity
         super.onCreate(savedInstanceState);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_BEHIND);
         setContentView(R.layout.activity_familia);
-        datos();
+
+
+
     }
 
-    public void datos()
+
+    public  boolean insertar(String nom, String id, String fech)
     {
-        GraphRequest request = GraphRequest.newMeRequest(
-                AccessToken.getCurrentAccessToken(),
-                new GraphRequest.GraphJSONObjectCallback() {
-                    @Override
-                    public void onCompleted(JSONObject object, GraphResponse response)
-                    {
-                        // Application code
-                        try {
-                            nombre = (String) object.get("name");
-                            id = String.valueOf(object.get("id"));
-                            fecha_nas = String.valueOf(object.get("fecha_nas"));
-                           } catch (JSONException e)
-                        {
-                            e.printStackTrace();
-                        }
-                    }
-                });
-        Bundle parameters = new Bundle();
-        parameters.putString("fields", "id,name,email,gender, birthday");
-        request.setParameters(parameters);
-        request.executeAsync();
-    }
-    private  boolean insertar()
-    {
+
+
         HttpClient httpClient;
         List<NameValuePair> nameValuePairs = null;
         HttpPost httpPost;
         httpClient = new DefaultHttpClient();
-        httpPost = new HttpPost("http://192.169.0.11/Festum/insertUsuario.php");
+        httpPost = new HttpPost("http://192.169.0.14/Festum/insertUsuario.php");
         nameValuePairs.add(new BasicNameValuePair("nombre", nombre));
         nameValuePairs.add(new BasicNameValuePair("id",id));
         nameValuePairs.add(new BasicNameValuePair("fecha_nas",fecha_nas));
