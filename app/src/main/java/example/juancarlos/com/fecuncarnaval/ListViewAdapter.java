@@ -49,9 +49,8 @@ public class ListViewAdapter extends BaseAdapter
 
         imgImg = (ImageView) itemView.findViewById(R.id.imageViewV);
 
-        //imgImg.setImageResource(imagenes[post]);
+        imgImg.setImageResource(fotos[position]);
 
-
-        return null;
+        return itemView;
     }
 }
