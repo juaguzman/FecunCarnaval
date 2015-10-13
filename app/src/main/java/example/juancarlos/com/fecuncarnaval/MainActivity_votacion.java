@@ -44,8 +44,9 @@ public class MainActivity_votacion extends AppCompatActivity {
 //Posteriormente podemos añadir más items a nuestro listview de la siguiente forma
 
 //primero añadimos más objetos a nuestra lista
-        libro = new Libro(2,getResources().getDrawable(R.drawable.cr1));
+        libro = new Libro(2,getResources().getDrawable(R.drawable.cr2));
         listLibros.add(libro);
+
 
 //y luego le decimos a nuestro adapter que notifique los cambios correspondientes y que actualice los items del ListView
         adapter.notifyDataSetChanged();

@@ -61,7 +61,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onSuccess(LoginResult loginResult)
             {
+
                 ejecutar();
+
+
             }
 
             @Override
@@ -73,7 +76,11 @@ public class MainActivity extends AppCompatActivity {
             public void onError(FacebookException e) {
                 info.setText("Login attempt failed.");
             }
-        });
+
+
+        }
+
+        );
 
         txtFbStatus = (TextView) this.findViewById(R.id.txtFbStatus);
 
