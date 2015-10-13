@@ -19,9 +19,27 @@
     <RatingBar
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/ratingBar"
+        android:id="@+id/rtgBar"
         android:stepSize="0.5"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="53dp" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageButton2"
+        android:focusable="false"
+        android:background="@drawable/btmvotar"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/imageButton" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Ranking"
+        android:id="@+id/tView"
+        android:layout_below="@+id/imageButton"
+        android:layout_alignParentEnd="true" />
 </RelativeLayout>
