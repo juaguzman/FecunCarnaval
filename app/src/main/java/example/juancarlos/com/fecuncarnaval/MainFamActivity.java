@@ -8,7 +8,8 @@ import android.widget.ImageButton;
 
 public class MainFamActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private ImageButton imgBtn28;
+    private ImageButton
+            imgBtn28;
     private ImageButton imgBtn29;
     @Override
     protected void onCreate(Bundle savedInstanceState) {

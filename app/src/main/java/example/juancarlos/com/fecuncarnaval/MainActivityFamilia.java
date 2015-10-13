@@ -28,6 +28,7 @@ public class MainActivityFamilia extends Activity implements View.OnClickListene
 
     private ImageButton imageButton;
     ListView listado;
+    String fechass;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,8 +43,10 @@ public class MainActivityFamilia extends Activity implements View.OnClickListene
 
     public void obtDatos()
     {
+        Bundle bundle=getIntent().getExtras();
+        fechass = bundle.getString("fecha");
         AsyncHttpClient client = new AsyncHttpClient();
-        String url = "http://192.168.0.14/Festum/getPrograma.php";
+        String url = "http://192.168.0.14/Festum/getProgramad.php?fecha="+fechass;
 
         RequestParams parametros = new RequestParams();
         parametros.put("fecha","2015-12-28");
