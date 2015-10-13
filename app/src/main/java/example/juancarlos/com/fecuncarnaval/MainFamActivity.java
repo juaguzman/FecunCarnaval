@@ -18,7 +18,7 @@ public class MainFamActivity extends AppCompatActivity implements View.OnClickLi
     private ImageButton imgBtn4;
     private ImageButton imgBtn5;
     private ImageButton imgBtn6;
-    private ImageButton btnva;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,8 +42,6 @@ public class MainFamActivity extends AppCompatActivity implements View.OnClickLi
         imgBtn5.setOnClickListener(this);
         imgBtn6 = (ImageButton) findViewById(R.id.imgBtn6);
         imgBtn6.setOnClickListener(this);
-         btnva = (ImageButton)findViewById(R.id.imageButtonVA);
-        btnva.setOnClickListener(this);
 
     }
 
@@ -108,11 +106,7 @@ public class MainFamActivity extends AppCompatActivity implements View.OnClickLi
                 k.putExtra("fecha", "2015-12-29");
                 startActivity(k);
                 break;
-            case R.id.imageButtonVA:
-                Intent h = new Intent(this, MainActivityVotacioes.class);
-                h.putExtra("fecha", "2015-12-29");
-                startActivity(h);
-                break;
+
         }
     }
 }
