@@ -1,11 +1,14 @@
 package example.juancarlos.com.fecuncarnaval;
 
 import android.content.Intent;
+import android.media.Rating;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.RatingBar;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,6 +25,22 @@ public class MainActivity_votacion extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_activity_votacion);
 
+        final RatingBar ratingBar = (RatingBar)findViewById(R.id.ratingBar);
+
+        ratingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
+            @Override
+            public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
+                if (rating>0)
+                {
+                    Toast.makeText(MainActivity_votacion.this, "Valor" + String.valueOf(rating), Toast.LENGTH_LONG).show();
+                }
+                else
+                {
+                    Toast.makeText(MainActivity_votacion.this, "Inserte un valor"+ String.valueOf(rating), Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+
         list = (ListView) findViewById(R.id.list);
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -37,6 +56,22 @@ public class MainActivity_votacion extends AppCompatActivity {
 //Aqui rellenamos solo con un libro, pero se puede descargar una lista de internet o leyendo de base de datos por ejemplo.
         libro = new Libro(1,getResources().getDrawable(R.drawable.cr1));
         listLibros.add(libro);
+
+        libro = new Libro(2,getResources().getDrawable(R.drawable.cr2));
+        listLibros.add(libro);
+
+        libro = new Libro(3,getResources().getDrawable(R.drawable.cr3));
+        listLibros.add(libro);
+
+        libro = new Libro(4,getResources().getDrawable(R.drawable.cr4));
+        listLibros.add(libro);
+
+        libro = new Libro(5,getResources().getDrawable(R.drawable.cr5));
+        listLibros.add(libro);
+
+        libro = new Libro(6,getResources().getDrawable(R.drawable.cr6));
+        listLibros.add(libro);
+
 
 //Ahora rellenamos el ListView
         adapter = new ItemListAdapter(this, listLibros);
