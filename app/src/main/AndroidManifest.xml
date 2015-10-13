@@ -39,6 +39,8 @@
         </activity>
         <activity android:name=".MainActivity_votacion" >
         </activity>
+        <activity android:name=".MainActivityNoticias" >
+        </activity>
 
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"

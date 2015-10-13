@@ -63,6 +63,7 @@ private ImageButton imgBtnA;
             break;
             case (R.id.imgBtnA):
                 Intent j = new Intent(this, MainAmActivity.class);
+                startActivity(j);
             break;
 
         }

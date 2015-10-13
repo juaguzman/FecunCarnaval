@@ -20,12 +20,10 @@ public class MainActivity_votacion extends AppCompatActivity {
     private List<Libro> listLibros;
     private int ids;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_activity_votacion);
-
 
 
         list = (ListView) findViewById(R.id.list);
@@ -81,14 +79,12 @@ public class MainActivity_votacion extends AppCompatActivity {
         {
             case 1:
 
-            Intent a = new Intent(this, MainActivity.class);
+            Intent a = new Intent(this, MainActivityFtoVt.class);
             a.putExtra("id", ids);
             startActivity(a);
             break;
         }
     }
-
-
 
 
 }
