@@ -24,6 +24,7 @@ import cz.msebera.android.httpclient.Header;
 public class MainActivutyNoticias extends Activity
 {
     ListView listado;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
