@@ -46,10 +46,10 @@ public class MainAmActivity extends AppCompatActivity implements View.OnClickLis
         imgBtnA6 = (ImageButton) findViewById(R.id.imgBtna6);
         imgBtnA6.setOnClickListener(this);
 
-        imgbtnVotA = (ImageButton) findViewById(R.id.imgBtnVot);
+        imgbtnVotA = (ImageButton) findViewById(R.id.imgBtnVtA);
         imgbtnVotA.setOnClickListener(this);
 
-        imgbtnNA = (ImageButton) findViewById(R.id.imgBtnN);
+        imgbtnNA = (ImageButton) findViewById(R.id.imgbtnNoA);
         imgbtnNA.setOnClickListener(this);
 
     }

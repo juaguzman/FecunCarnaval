@@ -27,7 +27,7 @@ public class MainActivityAmigos extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_activity_amigos);
 
-        listado=(ListView) findViewById(R.id.listView);
+        listado=(ListView) findViewById(R.id.lstVwA);
         obtDatos();
 
     }
