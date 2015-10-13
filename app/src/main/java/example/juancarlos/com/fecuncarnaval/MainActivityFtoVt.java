@@ -5,36 +5,55 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.RatingBar;
+import android.widget.TextView;
+import android.widget.Toast;
 
-public class MainActivityFtoVt extends AppCompatActivity implements View.OnClickListener {
+public class MainActivityFtoVt extends AppCompatActivity {
     private RatingBar ratingBar;
     private ImageButton imgBtnVot;
+    private TextView tView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_activity_fto_vt);
-        imgBtnVot = (ImageButton) findViewById(R.id.imgBtnVot);
-        imgBtnVot.setOnClickListener(this);
+
         addListenerOnRatingBar();
+        //addListenerOnButton();
 
     }
-    public void addListenerOnRatingBar()
-    {
+
+    //private void addListenerOnButton()
+    //{
+      //  imgBtnVot = (ImageButton) findViewById(R.id.imgBtnVot);
+       // imgBtnVot.setOnClickListener(new View.OnClickListener() {
+         //   @Override
+          //  public void onClick(View v) {
+
+            //}
+       /// });
+
+
+//    }
+
+
+    public void addListenerOnRatingBar() {
 
         ratingBar = (RatingBar) findViewById(R.id.rtgBar);
+        tView = (TextView) findViewById(R.id.tView);
 
-         ratingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
-            public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
+        //if rating value is changed,
+        //display the current rating value in the result (textview) automatically
+        ratingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
+            public void onRatingChanged(RatingBar ratingBar, float rating,
+                                        boolean fromUser) {
+
+                tView.setText(String.valueOf(rating));
 
             }
         });
     }
 
-    @Override
-    public void onClick(View v)
-    {
-        String.valueOf(ratingBar.getRating());
 
-    }
+
 }

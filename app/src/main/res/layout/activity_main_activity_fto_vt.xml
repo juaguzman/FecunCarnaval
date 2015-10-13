@@ -13,8 +13,9 @@
         android:layout_height="150dp"
         android:id="@+id/imageButton"
         android:background="@drawable/btncam"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_above="@+id/tView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="24dp" />
 
     <RatingBar
         android:layout_width="wrap_content"
@@ -40,6 +41,6 @@
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="Ranking"
         android:id="@+id/tView"
-        android:layout_below="@+id/imageButton"
-        android:layout_alignParentEnd="true" />
+        android:layout_above="@+id/rtgBar"
+        android:layout_centerHorizontal="true" />
 </RelativeLayout>
