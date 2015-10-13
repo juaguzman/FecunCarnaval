@@ -18,6 +18,7 @@ import android.widget.Toast;
 public class MainActivityVotacioes extends Activity
 {
     ListView listado;
+    Adapter adapter;
 
     int [] fotos =
             {
@@ -32,8 +33,8 @@ public class MainActivityVotacioes extends Activity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        listado=(ListView) findViewById(R.id.listViewVotaciones);
-        Adapter adapter = new ListViewAdapter(this, fotos);
+         final ListView listado=(ListView) findViewById(R.id.listViewVotaciones);
+        adapter = new ListViewAdapter(this, fotos);
 
         listado.setAdapter((ListAdapter) adapter);
 
