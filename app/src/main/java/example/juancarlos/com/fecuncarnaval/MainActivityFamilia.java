@@ -117,8 +117,7 @@ public class MainActivityFamilia extends Activity implements View.OnClickListene
         switch (v.getId())
         {
             case (R.id.imageButtonN):
-                Intent intent =new Intent(this,MainActivutyNoticias.class);
-                startActivity(intent);
+
                 break;
         }
 
