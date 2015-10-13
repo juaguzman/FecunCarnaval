@@ -9,7 +9,7 @@
         android:layout_width="200dp"
         android:layout_height="50dp"
         android:id="@+id/imgBtnA"
-        android:background="@drawable/btnamg03"
+        android:background="@drawable/btnafinal"
         android:contentDescription="@string/btn"
         android:layout_gravity="center_horizontal"
         android:layout_marginBottom="33dp"

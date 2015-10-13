@@ -4,13 +4,61 @@
     android:layout_height="match_parent">
 
 
-    <ListView
+    <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/listView2"
+        android:id="@+id/imgBanN"
         android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="119dp" />
+        android:layout_alignParentStart="true"
+        android:background="@drawable/banner" />
 
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="200dp"
+        android:id="@+id/scrollView">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imgN1"
+            android:background="@drawable/noti1"
+            android:layout_below="@+id/imgBanN"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="61dp" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imgN2"
+            android:background="@drawable/noti2"
+            android:layout_below="@+id/scrollView"
+            android:layout_alignParentStart="true" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imgN3"
+            android:background="@drawable/noti3"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imgN4"
+            android:background="@drawable/noti4"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imgN5"
+            android:background="@drawable/noti5"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true" />
+
+
+    </ScrollView>
 
 </RelativeLayout>
