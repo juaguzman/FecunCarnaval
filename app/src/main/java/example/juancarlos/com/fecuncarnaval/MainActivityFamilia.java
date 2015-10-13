@@ -1,10 +1,13 @@
 package example.juancarlos.com.fecuncarnaval;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.ImageButton;
 import android.widget.ListView;
 
 import com.loopj.android.http.AsyncHttpClient;
@@ -21,27 +24,26 @@ import cz.msebera.android.httpclient.Header;
 /**
  * Created by usuario on 12/10/2015.
  */
-public class MainActivityFamilia extends Activity
-{
+public class MainActivityFamilia extends Activity implements View.OnClickListener {
+
+    private ImageButton imageButton;
     ListView listado;
-    private String fechas;
+
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_familia);
         listado=(ListView) findViewById(R.id.listView);
         obtDatos();
 
+        imageButton = (ImageButton) findViewById(R.id.imageButtonN);
+        imageButton.setOnClickListener(this);
     }
 
     public void obtDatos()
     {
-        Bundle bundle = getIntent().getExtras();
-        fechas = bundle.getString("fecha");
-
         AsyncHttpClient client = new AsyncHttpClient();
-        String url = "http://192.168.0.14/Festum/getProgramad.php?fecha="+fechas;
+        String url = "http://192.168.0.14/Festum/getPrograma.php";
 
         RequestParams parametros = new RequestParams();
         parametros.put("fecha","2015-12-28");
@@ -105,5 +107,20 @@ public class MainActivityFamilia extends Activity
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onClick(View v)
+    {
+        switch (v.getId())
+        {
+            case (R.id.imageButtonN):
+                Intent intent =new Intent(this,MainActivutyNoticias.class);
+                startActivity(intent);
+                break;
+        }
+
+
+
     }
 }

@@ -27,6 +27,8 @@
         </activity>
         <activity android:name=".MainActivityFamilia" >
         </activity>
+        <activity android:name=".MainActivutyNoticias" >
+        </activity>
 
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
