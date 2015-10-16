@@ -1,7 +1,9 @@
 package example.juancarlos.com.fecuncarnaval;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.ListView;
@@ -16,11 +18,15 @@ import java.util.ArrayList;
 
 import cz.msebera.android.httpclient.Header;
 
-public class MainActivityAmigos extends AppCompatActivity {
+public class MainActivityAmigos extends AppCompatActivity implements View.OnClickListener {
 
-    private ImageButton imgButton;
+
     ListView listado;
     String fechass;
+
+    private ImageButton imgbtnNa;
+    private ImageButton imgbtnAa;
+    private ImageButton imgbtnCa;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +36,14 @@ public class MainActivityAmigos extends AppCompatActivity {
         listado=(ListView) findViewById(R.id.lstVwA);
         obtDatos();
 
+        imgbtnAa = (ImageButton) findViewById(R.id.imgbtnAa);
+        imgbtnAa.setOnClickListener(this);
+
+        imgbtnNa = (ImageButton) findViewById(R.id.imgbtnNa);
+        imgbtnNa.setOnClickListener(this);
+        imgbtnCa = (ImageButton) findViewById(R.id.imgbtnCa);
+        imgbtnCa.setOnClickListener(this);
+
     }
 
     public void obtDatos()
@@ -37,10 +51,10 @@ public class MainActivityAmigos extends AppCompatActivity {
         Bundle bundle=getIntent().getExtras();
         fechass = bundle.getString("fecha");
         AsyncHttpClient client = new AsyncHttpClient();
-        String url = "http://festum1.comule.com/getProgramad.php?fecha"+fechass;
+        String url = "http://festum1.comule.com/getProgramad.php?fecha="+fechass;
 
         RequestParams parametros = new RequestParams();
-        parametros.put("fecha","2015-12-28");
+        parametros.put("fecha",fechass);
 
 
         client.post(url, parametros, new AsyncHttpResponseHandler()
@@ -96,4 +110,27 @@ public class MainActivityAmigos extends AppCompatActivity {
         return listado;
     }
 
+    @Override
+    public void onClick(View v)
+    {
+        switch (v.getId())
+        {
+            case (R.id.imgbtnAa):
+                Intent k = new Intent(this, MainActivityAgenda.class);
+                startActivity(k);
+
+                break;
+            case (R.id.imgbtnNa):
+                Intent kw = new Intent(this, MainActivityNoticias.class);
+                startActivity(kw);
+
+                break;
+            case (R.id.imgbtnCa):
+                Intent kq = new Intent(this, MainActivity_votacion.class);
+                startActivity(kq);
+
+                break;
+        }
+
+    }
 }

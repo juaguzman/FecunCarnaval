@@ -13,14 +13,32 @@
         android:layout_height="wrap_content"
         android:id="@+id/lstVwA"
         android:layout_marginTop="25dp"
-        android:layout_below="@+id/imageButton4"
+        android:layout_below="@+id/imgbtnNa"
         android:layout_alignParentEnd="true" />
 
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/imageButton4"
+        android:id="@+id/imgbtnNa"
         android:layout_alignParentTop="true"
         android:background="@drawable/btnnoticias"
         android:layout_alignEnd="@+id/lstVwA" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imgbtnCa"
+        android:background="@drawable/btngrande01"
+        android:layout_marginEnd="101dp"
+        android:layout_alignBottom="@+id/imgbtnAa"
+        android:layout_toStartOf="@+id/imgbtnNa" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imgbtnAa"
+        android:background="@drawable/agenda"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true" />
+
 </RelativeLayout>

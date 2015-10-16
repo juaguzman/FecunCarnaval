@@ -18,8 +18,9 @@ public class MainAmActivity extends AppCompatActivity implements View.OnClickLis
     private ImageButton imgBtnA5;
     private ImageButton imgBtnA6;
 
-    private ImageButton imgbtnVotA;
-    private ImageButton imgbtnNA;
+    private ImageButton imgbtnNap;
+    private ImageButton imgbtnAap;
+    private ImageButton imgbtnCap;
 
 
     @Override
@@ -46,12 +47,13 @@ public class MainAmActivity extends AppCompatActivity implements View.OnClickLis
         imgBtnA6 = (ImageButton) findViewById(R.id.imgBtna6);
         imgBtnA6.setOnClickListener(this);
 
-        imgbtnVotA = (ImageButton) findViewById(R.id.imgBtnVtA);
-        imgbtnVotA.setOnClickListener(this);
+        imgbtnAap = (ImageButton) findViewById(R.id.imgbtnAap);
+        imgbtnAap.setOnClickListener(this);
 
-        imgbtnNA = (ImageButton) findViewById(R.id.imgbtnNoA);
-        imgbtnNA.setOnClickListener(this);
-
+        imgbtnNap = (ImageButton) findViewById(R.id.imgbtnNap);
+        imgbtnNap.setOnClickListener(this);
+        imgbtnCap = (ImageButton) findViewById(R.id.imgbtnCap);
+        imgbtnCap.setOnClickListener(this);
     }
 
 
@@ -117,16 +119,27 @@ public class MainAmActivity extends AppCompatActivity implements View.OnClickLis
                 startActivity(k);
                 break;
 
-            case R.id.imgBtnN:
 
-                Intent no = new Intent(this, MainActivityNoticias.class);
-                startActivity(no);
-                break;
 
-            case R.id.imgBtnVot:
+            case R.id.imgbtnCf:
 
                 Intent vo = new Intent(this, MainActivity_votacion.class);
                 startActivity(vo);
+                break;
+            case (R.id.imgbtnAap):
+                Intent d = new Intent(this, MainActivityAgenda.class);
+                startActivity(d);
+
+                break;
+            case (R.id.imgbtnNap):
+                Intent kw = new Intent(this, MainActivityNoticias.class);
+                startActivity(kw);
+
+                break;
+            case (R.id.imgbtnCap):
+                Intent kq = new Intent(this, MainActivity_votacion.class);
+                startActivity(kq);
+
                 break;
 
         }

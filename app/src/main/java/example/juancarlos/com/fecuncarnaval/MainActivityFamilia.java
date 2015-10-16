@@ -3,12 +3,15 @@ package example.juancarlos.com.fecuncarnaval;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.BaseAdapter;
 import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
@@ -17,7 +20,6 @@ import com.loopj.android.http.RequestParams;
 import org.json.JSONArray;
 
 import java.util.ArrayList;
-import java.util.StringTokenizer;
 
 import cz.msebera.android.httpclient.Header;
 
@@ -26,23 +28,53 @@ import cz.msebera.android.httpclient.Header;
  */
 public class MainActivityFamilia extends Activity implements View.OnClickListener {
 
-    private ImageButton imageButton;
+   private ImageButton imgbtnNf;
+    private ImageButton imgbtnAf;
+    private ImageButton imgbtnCf;
 
-    private ImageButton imgBtnVot;
-    ListView listado;
+
+    ListView listado ;
     String fechass;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_familia);
-        imgBtnVot = (ImageButton) findViewById(R.id.imgBtnVot);
-        imgBtnVot.setOnClickListener(this);
+        imgbtnAf = (ImageButton) findViewById(R.id.imgbtnAf);
+        imgbtnAf.setOnClickListener(this);
+
+
+        imgbtnNf = (ImageButton) findViewById(R.id.imgbtnNf);
+        imgbtnNf.setOnClickListener(this);
+        imgbtnCf = (ImageButton) findViewById(R.id.imgbtnCf);
+        imgbtnCf.setOnClickListener(this);
+
         listado=(ListView) findViewById(R.id.listView);
         obtDatos();
 
-        imageButton = (ImageButton) findViewById(R.id.imageButtonN);
-        imageButton.setOnClickListener(this);
+        registerForContextMenu(listado);
+
+    }
+
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+        super.onCreateContextMenu(menu, v, menuInfo);
+        menu.add("Ver descripcion");
+        menu.add("Agregar a mi agenda");
+    }
+
+    @Override
+    public boolean onContextItemSelected(MenuItem item)
+    {
+        super.onContextItemSelected(item);
+        if (item.getTitle()=="Ver descripcion")
+        {
+            Toast.makeText(this, "hola mundo", Toast.LENGTH_LONG).show();
+        }
+
+
+        return true;
+
     }
 
     public void obtDatos()
@@ -119,9 +151,19 @@ public class MainActivityFamilia extends Activity implements View.OnClickListene
     {
         switch (v.getId())
         {
-            case (R.id.imgBtnVot):
-                Intent k = new Intent(this, MainActivity_votacion.class);
+            case (R.id.imgbtnAf):
+                Intent k = new Intent(this, MainActivityAgenda.class);
                 startActivity(k);
+
+                break;
+            case (R.id.imgbtnNf):
+                Intent kw = new Intent(this, MainActivityNoticias.class);
+                startActivity(kw);
+
+                break;
+            case (R.id.imgbtnCf):
+                Intent kq = new Intent(this, MainActivity_votacion.class);
+                startActivity(kq);
 
                 break;
         }

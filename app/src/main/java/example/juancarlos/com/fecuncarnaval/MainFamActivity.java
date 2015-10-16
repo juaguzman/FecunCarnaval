@@ -19,8 +19,9 @@ public class MainFamActivity extends AppCompatActivity implements View.OnClickLi
     private ImageButton imgBtn5;
     private ImageButton imgBtn6;
 
-    private ImageButton imgbtnVot;
-    private ImageButton imgbtnN;
+    private ImageButton imgbtnNfp;
+    private ImageButton imgbtnAfp;
+    private ImageButton imgbtnCfp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,12 +47,14 @@ public class MainFamActivity extends AppCompatActivity implements View.OnClickLi
         imgBtn6 = (ImageButton) findViewById(R.id.imgBtn6);
         imgBtn6.setOnClickListener(this);
 
-        imgbtnVot = (ImageButton) findViewById(R.id.imgBtnVot);
-        imgbtnVot.setOnClickListener(this);
+        imgbtnAfp = (ImageButton) findViewById(R.id.imgbtnAfp);
+        imgbtnAfp.setOnClickListener(this);
 
-        imgbtnN = (ImageButton) findViewById(R.id.imgBtnN);
-        imgbtnN.setOnClickListener(this);
 
+        imgbtnNfp = (ImageButton) findViewById(R.id.imgbtnNfp);
+        imgbtnNfp.setOnClickListener(this);
+        imgbtnCfp = (ImageButton) findViewById(R.id.imgbtnCfp);
+        imgbtnCfp.setOnClickListener(this);
 
     }
 
@@ -117,16 +120,27 @@ public class MainFamActivity extends AppCompatActivity implements View.OnClickLi
                 startActivity(k);
                 break;
 
-            case R.id.imgBtnN:
 
-                Intent no = new Intent(this, MainActivityNoticias.class);
-                startActivity(no);
-                break;
-
-            case R.id.imgBtnVot:
+            case R.id.imgbtnCf:
 
                 Intent vo = new Intent(this, MainActivity_votacion.class);
                 startActivity(vo);
+                break;
+
+            case (R.id.imgbtnAfp):
+                Intent y = new Intent(this, MainActivityAgenda.class);
+                startActivity(y);
+
+                break;
+            case (R.id.imgbtnNfp):
+                Intent kw = new Intent(this, MainActivityNoticias.class);
+                startActivity(kw);
+
+                break;
+            case (R.id.imgbtnCfp):
+                Intent kq = new Intent(this, MainActivity_votacion.class);
+                startActivity(kq);
+
                 break;
 
         }

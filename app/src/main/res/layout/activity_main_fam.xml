@@ -111,19 +111,27 @@
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/imgBtnVot"
         android:background="@drawable/btngrande01"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="-8dp" />
+        android:layout_marginTop="-8dp"
+        android:id="@+id/imgbtnCfp" />
 
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/imgBtnN"
+        android:id="@+id/imgbtnNfp"
         android:background="@drawable/btnnoticias"
         android:layout_alignParentTop="true"
-        android:layout_alignBottom="@+id/imgBtnVot"
+        android:layout_alignBottom="@+id/imgbtnCf"
         android:layout_alignEnd="@+id/imgBtn6" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imgbtnAfp"
+        android:background="@drawable/agenda"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
 
 </RelativeLayout>

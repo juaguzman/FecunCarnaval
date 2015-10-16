@@ -28,7 +28,7 @@
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/imgBtnVot"
+        android:id="@+id/imgbtnCf"
         android:background="@drawable/btngrande01"
         android:layout_alignBottom="@+id/imageView2"
         android:layout_centerHorizontal="true"
@@ -37,10 +37,20 @@
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/imageButtonN"
+        android:id="@+id/imgbtnNf"
         android:background="@drawable/btnnoticias"
-        android:layout_alignTop="@+id/imgBtnVot"
+        android:layout_alignTop="@+id/imgbtnCf"
         android:layout_alignParentEnd="true"
         android:layout_marginEnd="19dp" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imgbtnAf"
+        android:background="@drawable/agenda"
+        android:layout_alignBottom="@+id/imgbtnNf"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="21dp"
+        android:layout_alignTop="@+id/imgbtnCf" />
 
 </RelativeLayout>
