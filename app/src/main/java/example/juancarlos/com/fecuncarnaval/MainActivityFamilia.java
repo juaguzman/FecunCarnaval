@@ -71,6 +71,10 @@ public class MainActivityFamilia extends Activity implements View.OnClickListene
         {
             Toast.makeText(this, "hola mundo", Toast.LENGTH_LONG).show();
         }
+        else if (item.getTitle()=="Agregar  mi agenda")
+        {
+            Toast.makeText(this, "Evento agregado", Toast.LENGTH_LONG).show();
+        }
 
 
         return true;
