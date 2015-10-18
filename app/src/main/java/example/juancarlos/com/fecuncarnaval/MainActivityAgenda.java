@@ -135,6 +135,11 @@ public class MainActivityAgenda extends Activity implements View.OnClickListener
     }
 
     @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
     public void onClick(View v)
     {
         switch (v.getId())
