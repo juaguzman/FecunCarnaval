@@ -31,6 +31,7 @@ public class MainActivityDescripcion extends Activity
     TextView txtHoFinE;
     TextView txtDesE;
 
+
     String id;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
