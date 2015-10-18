@@ -64,8 +64,8 @@ public class MainActivity_votacion extends AppCompatActivity {
 //Posteriormente podemos añadir más items a nuestro listview de la siguiente forma
 
 //primero añadimos más objetos a nuestra lista
-        libro = new Libro(2,getResources().getDrawable(R.drawable.cr2));
-        listLibros.add(libro);
+      //  libro = new Libro(2,getResources().getDrawable(R.drawable.cr2));
+        //listLibros.add(libro);
 
 
 //y luego le decimos a nuestro adapter que notifique los cambios correspondientes y que actualice los items del ListView
@@ -83,6 +83,38 @@ public class MainActivity_votacion extends AppCompatActivity {
             a.putExtra("id", ids);
             startActivity(a);
             break;
+
+            case 2:
+
+                Intent b = new Intent(this, MainActivityFtoVt.class);
+                b.putExtra("id", ids);
+                startActivity(b);
+                break;
+            case 3:
+
+                Intent c = new Intent(this, MainActivityFtoVt.class);
+                c.putExtra("id", ids);
+                startActivity(c);
+                break;
+
+            case 4:
+
+                Intent d = new Intent(this, MainActivityFtoVt.class);
+                d.putExtra("id", ids);
+                startActivity(d);
+                break;
+            case 5:
+
+                Intent e = new Intent(this, MainActivityFtoVt.class);
+                e.putExtra("id", ids);
+                startActivity(e);
+                break;
+            case 6:
+
+                Intent f = new Intent(this, MainActivityFtoVt.class);
+                f.putExtra("id", ids);
+                startActivity(f);
+                break;
         }
     }
 

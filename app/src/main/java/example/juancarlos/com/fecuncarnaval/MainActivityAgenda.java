@@ -1,12 +1,14 @@
 package example.juancarlos.com.fecuncarnaval;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -23,10 +25,12 @@ import cz.msebera.android.httpclient.Header;
 /**
  * Created by usuario on 13/10/2015.
  */
-public class MainActivityAgenda extends Activity
-{
+public class MainActivityAgenda extends Activity implements View.OnClickListener {
     ListView listViewA;
     String fechass;
+
+    private ImageButton btnNag;
+    private ImageButton btnAag;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +39,13 @@ public class MainActivityAgenda extends Activity
 
         listViewA =(ListView) findViewById(R.id.listadoAgenda);
         obtDatos();
+
+        btnNag = (ImageButton) findViewById(R.id.btnNag);
+        btnNag.setOnClickListener(this);
+
+
+        btnAag = (ImageButton) findViewById(R.id.btnAag);
+        btnAag.setOnClickListener(this);
 
     }
 
@@ -121,5 +132,25 @@ public class MainActivityAgenda extends Activity
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public void onClick(View v)
+    {
+        switch (v.getId())
+        {
+            case (R.id.btnAag):
+                Intent k = new Intent(this, MainActivity_votacion.class);
+                startActivity(k);
+
+                break;
+            case (R.id.btnNag):
+                Intent kw = new Intent(this, MainActivityNoticias.class);
+                startActivity(kw);
+
+                break;
+        }
+
+
     }
 }
