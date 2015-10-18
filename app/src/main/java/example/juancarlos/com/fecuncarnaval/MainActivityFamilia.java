@@ -70,7 +70,8 @@ public class MainActivityFamilia extends Activity implements View.OnClickListene
         super.onContextItemSelected(item);
         if (item.getTitle()=="Ver descripcion")
         {
-            Toast.makeText(this, "hola mundo", Toast.LENGTH_LONG).show();
+            Intent ne = new Intent(this, MainActivityDescripcion.class);
+            startActivity(ne);
         }
         else if (item.getTitle()=="Agregar a mi agenda")
         {
