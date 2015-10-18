@@ -16,9 +16,11 @@ import android.widget.TextView;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
+import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
@@ -51,10 +53,11 @@ public class MainActivity extends AppCompatActivity {
     private LoginButton loginButton;
     private TextView txtFbStatus;
     private CallbackManager callbackManager;
+    RequestQueue requestQueue;
     private String id;
     private String nombre;
     private String fecha;
-    String insertUrl = "http://localhost/Festum/insertUsuario.php";
+    String insertUrl = "http://192.168.0.26/Festum/insertUsuario.php";
     private AccessToken accessToken;
 
     @Override
@@ -65,6 +68,7 @@ public class MainActivity extends AppCompatActivity {
         callbackManager = CallbackManager.Factory.create();
         setContentView(R.layout.activity_main);
         info = (TextView) findViewById(R.id.info);
+        requestQueue = Volley.newRequestQueue(getApplicationContext());
         loginButton = (LoginButton) findViewById(R.id.login_button);
         loginButton.setReadPermissions(Collections.singletonList("public_profile, email, user_birthday, user_friends"));
 
@@ -196,6 +200,9 @@ public class MainActivity extends AppCompatActivity {
                 return parameters;
             }
         };
-
+        requestQueue.add(request);
     }
+
+
+
 }
