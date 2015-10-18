@@ -68,6 +68,7 @@ public class MainActivity_votacion extends AppCompatActivity {
         //listLibros.add(libro);
 
 
+
 //y luego le decimos a nuestro adapter que notifique los cambios correspondientes y que actualice los items del ListView
         adapter.notifyDataSetChanged();
 

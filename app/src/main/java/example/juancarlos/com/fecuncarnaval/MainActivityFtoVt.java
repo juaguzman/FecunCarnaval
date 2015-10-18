@@ -63,19 +63,7 @@ public class MainActivityFtoVt extends Activity {
 
     public void votar(View v)
     {
-        AlertDialog.Builder  builder = new AlertDialog.Builder(this);
-        builder.setTitle(R.string.votacion);
-        builder.setMessage(R.string.te_voto);
-        builder.setPositiveButton(R.string.funde, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                Toast.makeText(MainActivityFtoVt.this, R.string.fundido, Toast.LENGTH_LONG).show();
-            }
-        });
-        builder.setNegativeButton(android.R.string.cancel, null);
 
-        Dialog dialog = builder.create();
-        dialog.show();
 
     }
 
@@ -99,13 +87,25 @@ public class MainActivityFtoVt extends Activity {
         ratingbar1=(RatingBar)findViewById(R.id.ratingBar1);
         button=(Button)findViewById(R.id.button1);
         //Performing action on Button Click
+        final AlertDialog.Builder builder = new AlertDialog.Builder(this);
         button.setOnClickListener(new View.OnClickListener() {
 
             @Override
-            public void onClick(View arg0) {
-                //Getting the rating and displaying it on the toast
-                String rating = String.valueOf(ratingbar1.getRating());
-                Toast.makeText(getApplicationContext(), rating, Toast.LENGTH_LONG).show();
+            public void onClick(View arg0)
+            {
+
+                builder.setTitle(R.string.votacion);
+                builder.setMessage(R.string.te_voto);
+                builder.setPositiveButton(R.string.funde, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Toast.makeText(MainActivityFtoVt.this, R.string.fundido, Toast.LENGTH_LONG).show();
+                    }
+                });
+                builder.setNegativeButton(android.R.string.cancel, null);
+
+                Dialog dialog = builder.create();
+                dialog.show();
             }
 
         });

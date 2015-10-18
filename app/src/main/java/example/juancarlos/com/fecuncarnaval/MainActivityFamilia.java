@@ -31,6 +31,7 @@ public class MainActivityFamilia extends Activity implements View.OnClickListene
    private ImageButton imgbtnNf;
     private ImageButton imgbtnAf;
     private ImageButton imgbtnCf;
+    private String id;
 
 
     ListView listado ;
@@ -71,7 +72,7 @@ public class MainActivityFamilia extends Activity implements View.OnClickListene
         {
             Toast.makeText(this, "hola mundo", Toast.LENGTH_LONG).show();
         }
-        else if (item.getTitle()=="Agregar  mi agenda")
+        else if (item.getTitle()=="Agregar a mi agenda")
         {
             Toast.makeText(this, "Evento agregado", Toast.LENGTH_LONG).show();
         }
@@ -124,6 +125,7 @@ public class MainActivityFamilia extends Activity implements View.OnClickListene
 
             for (int i=0; i<jsonArray.length();i++)
             {
+                id = jsonArray.getJSONObject(i).getString("id");
                 texto=jsonArray.getJSONObject(i).getString("evento") + "\n " +
                         jsonArray.getJSONObject(i).getString("horaInicio") + "-"+
                         jsonArray.getJSONObject(i).getString("horaFin") + " ";

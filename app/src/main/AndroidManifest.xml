@@ -54,6 +54,8 @@
 
         <activity android:name=".MainActivityFtoVt" >
         </activity>
+        <activity android:name=".MainActivityAgenda" >
+        </activity>
     </application>
 
 </manifest>
