@@ -47,6 +47,8 @@ public class MainActivityAgenda extends Activity implements View.OnClickListener
         btnAag = (ImageButton) findViewById(R.id.btnAag);
         btnAag.setOnClickListener(this);
 
+        registerForContextMenu(listViewA);
+
     }
 
     @Override
