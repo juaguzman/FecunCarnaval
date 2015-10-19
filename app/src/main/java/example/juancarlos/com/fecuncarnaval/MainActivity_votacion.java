@@ -33,7 +33,7 @@ public class MainActivity_votacion extends AppCompatActivity {
             {
                 Libro entry = (Libro) parent.getItemAtPosition(position);
                 ids = entry.getId();
-                votar();
+               votar();
             }
         });
         listLibros = new ArrayList<Libro>();
@@ -76,49 +76,9 @@ public class MainActivity_votacion extends AppCompatActivity {
 
     public void votar()
     {
-        switch (ids)
-        {
-            case 1:
-
-            Intent a = new Intent(this, MainActivityFtoVt.class);
-            a.putExtra("id", ids);
-            startActivity(a);
-            break;
-
-            case 2:
-
-                Intent b = new Intent(this, MainActivityFtoVt.class);
-                b.putExtra("id", ids);
-                startActivity(b);
-                break;
-            case 3:
-
-                Intent c = new Intent(this, MainActivityFtoVt.class);
-                c.putExtra("id", ids);
-                startActivity(c);
-                break;
-
-            case 4:
-
-                Intent d = new Intent(this, MainActivityFtoVt.class);
-                d.putExtra("id", ids);
-                startActivity(d);
-                break;
-            case 5:
-
-                Intent e = new Intent(this, MainActivityFtoVt.class);
-                e.putExtra("id", ids);
-                startActivity(e);
-                break;
-            case 6:
-
-                Intent f = new Intent(this, MainActivityFtoVt.class);
-                f.putExtra("id", ids);
-                startActivity(f);
-                break;
-        }
+        Intent b = new Intent(this , MainActivityFtoVt.class);
+        b.putExtra("ids",String.valueOf(ids));
+        startActivity(b);
     }
-
-
 }
 

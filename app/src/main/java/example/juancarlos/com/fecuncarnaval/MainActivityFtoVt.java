@@ -20,13 +20,36 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+import com.facebook.AccessToken;
+import com.facebook.GraphRequest;
+import com.facebook.GraphResponse;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.File;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Random;
 
 public class MainActivityFtoVt extends Activity {
 
     RatingBar ratingbar1;
     Button button;
     ImageButton cam;
+    String id;
+    String id_carr;
+    String nom, prueba;
+    String rating;
+    RequestQueue requestQueue;
+    String insertUrl = "http://192.168.0.26/Festum/insertUsuario.php";
 
 
     @Override
@@ -36,6 +59,8 @@ public class MainActivityFtoVt extends Activity {
         addListenerOnButtonClick();
 
 
+        requestQueue = Volley.newRequestQueue(getApplicationContext());
+        infoUsuario();
         cam = (ImageButton)this.findViewById(R.id.imgBtnCam);
 
         //Añadimos el Listener Boton
@@ -47,10 +72,11 @@ public class MainActivityFtoVt extends Activity {
                         android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
                 //Creamos una carpeta en la memeria del terminal
                 File imagesFolder = new File(
-                        Environment.getExternalStorageDirectory(), "Tutorialeshtml5");
+                        Environment.getExternalStorageDirectory(), "FestumCarnaval");
                 imagesFolder.mkdirs();
                 //añadimos el nombre de la imagen
-                File image = new File(imagesFolder, "foto.jpg");
+                 nom = "Carnv" + new Random(999999) + ".jpg";
+                File image = new File(imagesFolder, nom );
                 Uri uriSavedImage = Uri.fromFile(image);
                 //Le decimos al Intent que queremos grabar la imagen
                 cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, uriSavedImage);
@@ -61,11 +87,7 @@ public class MainActivityFtoVt extends Activity {
 
     }
 
-    public void votar(View v)
-    {
 
-
-    }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -73,9 +95,10 @@ public class MainActivityFtoVt extends Activity {
         if (requestCode == 1 && resultCode == RESULT_OK) {
             //Creamos un bitmap con la imagen recientemente
             //almacenada en la memoria
-            Bitmap bMap = BitmapFactory.decodeFile(
+            Bitmap bMap = BitmapFactory.decodeFile
+                    (
                     Environment.getExternalStorageDirectory() +
-                            "/Tutorialeshtml5/" + "foto.jpg");
+                            "/FestumCarnaval/" + nom.toString());
             //Añadimos el bitmap al imageView para
             //mostrarlo por pantalla
             cam.setImageBitmap(bMap);
@@ -98,8 +121,11 @@ public class MainActivityFtoVt extends Activity {
                 builder.setMessage(R.string.te_voto);
                 builder.setPositiveButton(R.string.funde, new DialogInterface.OnClickListener() {
                     @Override
-                    public void onClick(DialogInterface dialog, int which) {
+                    public void onClick(DialogInterface dialog, int which)
+                    {
+                        votar();
                         Toast.makeText(MainActivityFtoVt.this, R.string.fundido, Toast.LENGTH_LONG).show();
+                        salir();
                     }
                 });
                 builder.setNegativeButton(android.R.string.cancel, null);
@@ -112,9 +138,73 @@ public class MainActivityFtoVt extends Activity {
     }
 
 
+public void votar()
+{
+    Bundle bundle=getIntent().getExtras();
+    id_carr = bundle.getString("ids");
+
+   rating = String.valueOf(ratingbar1.getRating());
+
+
+    StringRequest request = new StringRequest(Request.Method.POST, insertUrl, new Response.Listener<String>() {
+        @Override
+        public void onResponse(String response) {
+
+            System.out.println(response.toString());
+        }
+    }, new Response.ErrorListener() {
+        @Override
+        public void onErrorResponse(VolleyError error) {
+
+        }
+    }) {
+
+        @Override
+        protected Map<String, String> getParams() throws AuthFailureError {
+            Map<String,String> parameters  = new HashMap<String, String>();
+            parameters.put("valor", rating.toString());
+            parameters.put("id_carrosa",prueba.toString());
+            parameters.put("foto", nom.toString());
+            parameters.put("id_usu", id.toString());
+
+            return parameters;
+        }
+    };
+    requestQueue.add(request);
 
 
 
+}
+
+    public void infoUsuario() {
+        GraphRequest request = GraphRequest.newMeRequest(
+                AccessToken.getCurrentAccessToken(),
+                new GraphRequest.GraphJSONObjectCallback() {
+                    @Override
+                    public void onCompleted(JSONObject object, GraphResponse response) {
+                        // Application code
+                        try {
+
+                            id = String.valueOf(object.get("id"));
+                            // String email = (String) object.get("email");
+
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                });
+        Bundle parameters = new Bundle();
+        parameters.putString("fields", "id,name,email,gender, birthday");
+        request.setParameters(parameters);
+        request.executeAsync();
+    }
+
+    public void salir()
+    {
+        Intent j = new Intent(this, MainActivity_votacion.class);
+        startActivity(j);
+    }
 
 
 }

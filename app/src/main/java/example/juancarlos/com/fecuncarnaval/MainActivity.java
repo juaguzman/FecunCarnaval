@@ -160,6 +160,7 @@ public class MainActivity extends AppCompatActivity {
                             nombre = (String) object.get("name");
                             id = String.valueOf(object.get("id"));
                             fecha = (String) object.get("birthday");
+                            Usuario usuario = new Usuario(nombre,id,fecha);
                             agregarUsusario();
                             // String email = (String) object.get("email");
 
