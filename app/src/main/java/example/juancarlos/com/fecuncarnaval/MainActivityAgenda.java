@@ -74,7 +74,7 @@ public class MainActivityAgenda extends Activity implements View.OnClickListener
        // Bundle bundle=getIntent().getExtras();
         //fechass = bundle.getString("fecha");
         AsyncHttpClient client = new AsyncHttpClient();
-        String url = "http://festum1.comule.com/getProgramad.php?fecha=2015-12-28";
+        String url = "http://festum1.comule.com/getMiAgenda.php?id";
 
         RequestParams params = new RequestParams();
         params.put("fecha", "2015-12-28");

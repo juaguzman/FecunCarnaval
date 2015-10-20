@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
     private String id;
     private String nombre;
     private String fecha;
-    String insertUrl = "http://192.168.0.26/Festum/insertUsuario.php";
+    String insertUrl = "http://festum1.comule.com/insertUsuario.php";
     private AccessToken accessToken;
 
     @Override
