@@ -12,8 +12,6 @@
         android:cacheColorHint="#f3e414"
         android:clickable="true"
         android:divider="@drawable/list_div"
-        android:overScrollFooter="#67552e"
-        android:overScrollHeader="#67552e"
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
         android:layout_marginBottom="35dp" />
