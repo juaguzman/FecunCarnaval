@@ -26,7 +26,10 @@ public class MainActivityNoticias extends Activity implements View.OnClickListen
     private String link3 = "http://www.carnavaldepasto.org/?q=descargas" ;
     Intent intent3 = null;
 
-    private String link4 = "" ;
+    private String link5 = "https://www.facebook.com/carnavaldenegrosyblancospasto/posts/1201523903207599?__mref=message_bubble" ;
+    Intent intent5 = null;
+
+    private String link4 = "http://www.carnavaldepasto.org/?q=descargas " ;
     Intent intent4 = null;
 
     @Override
@@ -68,6 +71,16 @@ public class MainActivityNoticias extends Activity implements View.OnClickListen
             case (R.id.imgN3):
                 intent3 = new Intent(intent1.ACTION_VIEW, Uri.parse(link3));
                 startActivity(intent3);
+                break;
+
+            case (R.id.imgN5):
+                intent5 = new Intent(intent1.ACTION_VIEW, Uri.parse(link5));
+                startActivity(intent5);
+                break;
+
+            case (R.id.imgN4):
+                intent4 = new Intent(intent1.ACTION_VIEW, Uri.parse(link4));
+                startActivity(intent4);
                 break;
 
         }

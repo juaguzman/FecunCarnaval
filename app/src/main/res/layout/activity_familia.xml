@@ -3,7 +3,7 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="600dp"
     android:weightSum="1"
-    android:background="@drawable/diaf">
+    android:background="@drawable/amarillo">
 
     <ListView
         android:layout_width="match_parent"
@@ -44,14 +44,5 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
         android:layout_marginTop="18dp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Selecciona Eventos para tu agenda"
-        android:id="@+id/textViewTf"
-        android:layout_above="@+id/listView"
-        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>
