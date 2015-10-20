@@ -27,7 +27,7 @@ import cz.msebera.android.httpclient.Header;
  */
 public class MainActivityAgenda extends Activity implements View.OnClickListener {
     ListView listViewA;
-    String fechass;
+    String id;
 
     private ImageButton btnNag;
     private ImageButton btnAag;
@@ -71,13 +71,13 @@ public class MainActivityAgenda extends Activity implements View.OnClickListener
 
     public void obtDatos()
     {
-       // Bundle bundle=getIntent().getExtras();
-        //fechass = bundle.getString("fecha");
+       Bundle bundle=getIntent().getExtras();
+        id = bundle.getString("id");
         AsyncHttpClient client = new AsyncHttpClient();
-        String url = "http://festum1.comule.com/getMiAgenda.php?id";
+        String url = "http://festum1.comule.com/getMiAgenda.php?id=";
 
         RequestParams params = new RequestParams();
-        params.put("fecha", "2015-12-28");
+        params.put("id", id.toString());
 
         client.post(url, params, new AsyncHttpResponseHandler() {
             @Override

@@ -100,7 +100,7 @@ public class MainActivityFamilia extends Activity implements View.OnClickListene
         }
         else if (item.getTitle()=="Agregar a mi agenda")
         {
-
+            AgregarEvento(pos);
             Toast.makeText(this, "Evento agregado", Toast.LENGTH_LONG).show();
         }
 
@@ -212,6 +212,7 @@ public class MainActivityFamilia extends Activity implements View.OnClickListene
 
 
 
+//Metdo para Obtenr el id del usuario se puede usar en cualuier view
 
     public void obtenerIdusu()
     {
@@ -240,8 +241,10 @@ public class MainActivityFamilia extends Activity implements View.OnClickListene
         request.executeAsync();    }
 
 
-    public void AgregarEvento()
+    public void AgregarEvento(int pos)
     {
+        final Programa prog = (Programa)listado.getItemAtPosition(pos);
+
         StringRequest request = new StringRequest(Request.Method.POST, insertUrl, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
@@ -258,15 +261,15 @@ public class MainActivityFamilia extends Activity implements View.OnClickListene
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String,String> parameters  = new HashMap<String, String>();
-                parameters.put("id_prog", id.toString());
-                parameters.put("fecha", fecha.toString());
-                parameters.put("evento",evento.toString());
-                parameters.put("descripcion",descripcion.toString());
-                parameters.put("lugar",lugar.toString());
-                parameters.put("fechaN",fecha.toString());
-                parameters.put("fechaN",fecha.toString());
-                parameters.put("fechaN",fecha.toString());
-                parameters.put("fechaN",fecha.toString());
+                parameters.put("id_prog", prog.getId().toString());
+                parameters.put("fecha", prog.getFecha().toString());
+                parameters.put("evento",prog.getEvento().toString());
+                parameters.put("descripcion",prog.getDescripcion().toString());
+                parameters.put("lugar",prog.getLugar().toString());
+                parameters.put("horaInicio",prog.getHoraIni().toString());
+                parameters.put("horaFin",prog.getHoraFin().toString());
+                parameters.put("categoria",prog.getCategoria().toString());
+                parameters.put("usuario_id",idUsu.toString());
 
                 return parameters;
             }
