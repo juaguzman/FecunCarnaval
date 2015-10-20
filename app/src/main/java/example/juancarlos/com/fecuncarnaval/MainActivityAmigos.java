@@ -37,7 +37,7 @@ import java.util.Map;
 
 import cz.msebera.android.httpclient.Header;
 
-public class MainActivityAmigos extends AppCompatActivity implements View.OnClickListener {
+public class MainActivityAmigos extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemClickListener {
 
 
     ListView listado;
@@ -62,6 +62,7 @@ public class MainActivityAmigos extends AppCompatActivity implements View.OnClic
         setContentView(R.layout.activity_main_activity_amigos);
 
         listado = (ListView) findViewById(R.id.lstVwA);
+        listado.setOnItemClickListener(this);
         obtDatos();
 
         imgbtnAa = (ImageButton) findViewById(R.id.imgbtnAa);
@@ -216,6 +217,9 @@ public class MainActivityAmigos extends AppCompatActivity implements View.OnClic
                 startActivity(kq);
 
                 break;
+            case(R.id.lstVwA):
+
+                break;
         }
 
     }
@@ -267,7 +271,10 @@ public class MainActivityAmigos extends AppCompatActivity implements View.OnClic
     }
 
 
-
-
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id)
+    {
+        Toast.makeText(this, "Mantenga presionado para ver las opciones", Toast.LENGTH_LONG).show();
+    }
 }
 
