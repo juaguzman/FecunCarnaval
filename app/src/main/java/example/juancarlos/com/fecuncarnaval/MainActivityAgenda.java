@@ -114,7 +114,9 @@ public class MainActivityAgenda extends Activity implements View.OnClickListener
 
             for (int i=0; i<jsonArray.length();i++)
             {
-                texto=jsonArray.getJSONObject(i).getString("evento") + "\n " +
+                texto=
+                        jsonArray.getJSONObject(i).getString("fecha") + " - " +
+                        jsonArray.getJSONObject(i).getString("evento") + "\n " +
                         jsonArray.getJSONObject(i).getString("horaInicio") + "-"+
                         jsonArray.getJSONObject(i).getString("horaFin") + " ";
 
