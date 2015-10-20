@@ -191,6 +191,7 @@ public class MainActivityFamilia extends Activity implements View.OnClickListene
         {
             case (R.id.imgbtnAf):
                 Intent k = new Intent(this, MainActivityAgenda.class);
+                k.putExtra("id",String.valueOf(idUsu));
                 startActivity(k);
 
                 break;
