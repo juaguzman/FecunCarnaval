@@ -6,6 +6,13 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
 
+import com.facebook.AccessToken;
+import com.facebook.GraphRequest;
+import com.facebook.GraphResponse;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
 public class MainFamActivity extends AppCompatActivity implements View.OnClickListener {
 
 
@@ -18,6 +25,7 @@ public class MainFamActivity extends AppCompatActivity implements View.OnClickLi
     private ImageButton imgBtn4;
     private ImageButton imgBtn5;
     private ImageButton imgBtn6;
+    private String idUsu;
 
     private ImageButton imgbtnNfp;
     private ImageButton imgbtnAfp;
@@ -61,6 +69,7 @@ public class MainFamActivity extends AppCompatActivity implements View.OnClickLi
     @Override
     public void onClick(View v)
     {
+        obtenerIdusu();
         switch (v.getId())
         {
             case R.id.imgBtn28:
@@ -129,7 +138,7 @@ public class MainFamActivity extends AppCompatActivity implements View.OnClickLi
 
             case (R.id.imgbtnAfp):
                 Intent y = new Intent(this, MainActivityAgenda.class);
-
+                y.putExtra("id",idUsu.toString());
                 startActivity(y);
 
                 break;
@@ -146,4 +155,30 @@ public class MainFamActivity extends AppCompatActivity implements View.OnClickLi
 
         }
     }
+
+    public void obtenerIdusu()
+    {
+        GraphRequest request = GraphRequest.newMeRequest(
+                AccessToken.getCurrentAccessToken(),
+                new GraphRequest.GraphJSONObjectCallback() {
+                    @Override
+                    public void onCompleted(JSONObject object, GraphResponse response) {
+                        // Application code
+                        try {
+
+                            idUsu = String.valueOf(object.get("id"));
+
+
+                            // String email = (String) object.get("email");
+
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                });
+        Bundle parameters = new Bundle();
+        parameters.putString("fields", "id,name,email,gender, birthday");
+        request.setParameters(parameters);
+        request.executeAsync();    }
 }
