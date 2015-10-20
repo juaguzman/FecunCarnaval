@@ -92,10 +92,10 @@ public class MainActivityAmigos extends AppCompatActivity implements View.OnClic
 
         if (item.getTitle() == "Ver descripcion") {
             pos = info.position;
-            //prueba(pos);
+            prueba(pos);
 
         } else if (item.getTitle() == "Agregar a mi agenda") {
-            //AgregarEvento(pos);
+            AgregarEvento(pos);
             Toast.makeText(this, "Evento agregado", Toast.LENGTH_LONG).show();
         }
 
