@@ -16,6 +16,7 @@ import com.loopj.android.http.RequestParams;
 import org.json.JSONArray;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import cz.msebera.android.httpclient.Header;
 
@@ -24,13 +25,19 @@ public class MainActivityAmigos extends AppCompatActivity implements View.OnClic
 
     ListView listado;
     String fechass;
+
     private int pos;
     private String id,evento,descripcion,lugar,horaIni,horaFin,categoria,idUsu,fecha;
     RequestQueue requestQueue;
 
+    String insertUrl = "http://festum1.comule.com/getProgramad.php?fecha="+fecha;
+
     private ImageButton imgbtnNa;
     private ImageButton imgbtnAa;
     private ImageButton imgbtnCa;
+
+    private ItemListAdapterProg adapter;
+    private List<Programa> listprog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,12 +60,12 @@ public class MainActivityAmigos extends AppCompatActivity implements View.OnClic
     public void obtDatos()
     {
         Bundle bundle=getIntent().getExtras();
-        fechass = bundle.getString("fecha");
+        fecha = bundle.getString("fecha");
         AsyncHttpClient client = new AsyncHttpClient();
-        String url = "http://festum1.comule.com/getProgramad.php?fecha="+fechass;
+
 
         RequestParams parametros = new RequestParams();
-        parametros.put("fecha",fechass);
+        parametros.put("fecha",fecha);
 
 
         client.post(url, parametros, new AsyncHttpResponseHandler()
