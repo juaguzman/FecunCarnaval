@@ -48,6 +48,7 @@ public class MainActivityFamilia extends Activity implements View.OnClickListene
     private ImageButton imgbtnAf;
     private ImageButton imgbtnCf;
     private int pos;
+    Programa prog;
     private String id,evento,descripcion,lugar,horaIni,horaFin,categoria,idUsu,fecha;
     RequestQueue requestQueue;
 
@@ -192,7 +193,7 @@ public class MainActivityFamilia extends Activity implements View.OnClickListene
         {
             case (R.id.imgbtnAf):
                 Intent k = new Intent(this, MainActivityAgenda.class);
-                k.putExtra("id",String.valueOf(idUsu));
+                k.putExtra("id",String.valueOf(idUsu.toString()));
                 startActivity(k);
 
                 break;
@@ -245,7 +246,7 @@ public class MainActivityFamilia extends Activity implements View.OnClickListene
 
     public void AgregarEvento(int pos)
     {
-        final Programa prog = (Programa)listado.getItemAtPosition(pos);
+        prog = (Programa)listado.getItemAtPosition(pos);
 
         StringRequest request = new StringRequest(Request.Method.POST, insertUrl, new Response.Listener<String>() {
             @Override
@@ -263,7 +264,9 @@ public class MainActivityFamilia extends Activity implements View.OnClickListene
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String,String> parameters  = new HashMap<String, String>();
-                parameters.put("id_prog", prog.getId().toString());
+                id=prog.getId();
+                fecha=prog.getFecha();
+                parameters.put("id_prog", id.toString());
                 parameters.put("fecha", prog.getFecha().toString());
                 parameters.put("evento",prog.getEvento().toString());
                 parameters.put("descripcion",prog.getDescripcion().toString());

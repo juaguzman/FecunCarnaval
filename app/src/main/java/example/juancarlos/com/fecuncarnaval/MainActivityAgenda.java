@@ -74,7 +74,7 @@ public class MainActivityAgenda extends Activity implements View.OnClickListener
        Bundle bundle=getIntent().getExtras();
         id = bundle.getString("id");
         AsyncHttpClient client = new AsyncHttpClient();
-        String url = "http://festum1.comule.com/getMiAgenda.php?id=";
+        String url = "http://festum1.comule.com/getMiAgenda.php?id="+id;
 
         RequestParams params = new RequestParams();
         params.put("id", id.toString());
