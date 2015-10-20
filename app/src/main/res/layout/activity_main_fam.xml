@@ -23,7 +23,7 @@
             android:layout_row="0"
             android:layout_column="0"
             android:contentDescription="@string/btn28"
-            android:background="@drawable/f28"
+            android:background="@drawable/f28n"
             android:layout_marginLeft="2dp" />
 
         <ImageButton
@@ -33,7 +33,7 @@
             android:layout_row="0"
             android:layout_column="2"
             android:contentDescription="@string/btn"
-            android:background="@drawable/f29"
+            android:background="@drawable/f29n"
             android:layout_marginRight="5dp"
             android:contextClickable="true" />
 
@@ -44,7 +44,7 @@
             android:layout_row="1"
             android:layout_column="0"
             android:contentDescription="@string/btn28"
-            android:background="@drawable/f30"
+            android:background="@drawable/f30n"
             android:layout_marginLeft="2dp" />
 
         <ImageButton
@@ -54,7 +54,7 @@
             android:layout_row="1"
             android:layout_column="2"
             android:contentDescription="@string/btn28"
-            android:background="@drawable/f31"
+            android:background="@drawable/f31n"
             android:layout_marginRight="5dp" />
 
         <ImageButton
@@ -64,7 +64,7 @@
             android:layout_row="2"
             android:layout_column="0"
             android:contentDescription="@string/btn28"
-            android:background="@drawable/f2"
+            android:background="@drawable/f2n"
             android:layout_marginLeft="2dp" />
 
         <ImageButton
@@ -74,7 +74,7 @@
             android:layout_row="2"
             android:layout_column="2"
             android:contentDescription="@string/btn28"
-            android:background="@drawable/f3"
+            android:background="@drawable/f3n"
             android:layout_marginRight="5dp" />
 
         <ImageButton
@@ -84,7 +84,7 @@
             android:layout_row="3"
             android:layout_column="0"
             android:contentDescription="@string/btn28"
-            android:background="@drawable/f4"
+            android:background="@drawable/f4n"
             android:layout_marginLeft="2dp" />
 
         <ImageButton
@@ -94,7 +94,7 @@
             android:layout_row="3"
             android:layout_column="2"
             android:contentDescription="@string/btn28"
-            android:background="@drawable/f5"
+            android:background="@drawable/f5n"
             android:layout_marginRight="5dp" />
 
     </GridLayout>
@@ -103,7 +103,7 @@
         android:layout_width="wrap_content"
         android:layout_height="84dp"
         android:id="@+id/imgBtn6"
-        android:background="@drawable/f6"
+        android:background="@drawable/f6n"
         android:layout_alignTop="@+id/gridLayout"
         android:layout_alignParentStart="true"
         android:layout_marginTop="340dp"

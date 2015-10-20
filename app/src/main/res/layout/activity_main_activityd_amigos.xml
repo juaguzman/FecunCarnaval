@@ -11,9 +11,9 @@
     <GridLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="60dp"
         android:id="@+id/gridLayout2"
-        android:layout_alignParentBottom="true">
+        android:layout_above="@+id/imgbtna6">
 
         <ImageButton
             android:layout_width="180dp"
@@ -125,8 +125,9 @@
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/imageButton"
+        android:id="@+id/imgbtna6"
+        android:background="@drawable/da6a"
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
-        android:background="@drawable/da6a" />
+        android:layout_marginBottom="29dp" />
 </RelativeLayout>
