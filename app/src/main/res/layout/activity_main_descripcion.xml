@@ -111,7 +111,8 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:id="@+id/txtDesE"
+        android:text="1234567890"
         android:layout_below="@+id/textView5"
-        android:layout_alignStart="@+id/txtFinE" />
+        android:layout_toEndOf="@+id/txtEvento" />
 
 </RelativeLayout>
