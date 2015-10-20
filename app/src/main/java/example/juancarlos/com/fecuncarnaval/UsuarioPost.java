@@ -52,7 +52,7 @@ public class UsuarioPost extends AppCompatActivity
         List<NameValuePair> nameValuePairs = null;
         HttpPost httpPost;
         httpClient = new DefaultHttpClient();
-        httpPost = new HttpPost("http://192.169.0.14/Festum/insertUsuario.php");
+        httpPost = new HttpPost("http://festum1.comule.com/insertUsuario.php");
         nameValuePairs.add(new BasicNameValuePair("nombre", nombre));
         nameValuePairs.add(new BasicNameValuePair("id",id));
         nameValuePairs.add(new BasicNameValuePair("fecha_nas",fecha_nas));
