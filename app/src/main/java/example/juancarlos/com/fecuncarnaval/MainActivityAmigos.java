@@ -204,6 +204,7 @@ public class MainActivityAmigos extends AppCompatActivity implements View.OnClic
         switch (v.getId()) {
             case (R.id.imgbtnAa):
                 Intent k = new Intent(this, MainActivityAgenda.class);
+                k.putExtra("id",idUsu.toString());
                 startActivity(k);
 
                 break;
@@ -271,10 +272,14 @@ public class MainActivityAmigos extends AppCompatActivity implements View.OnClic
     }
 
 
+
+
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id)
     {
         Toast.makeText(this, "Mantenga presionado para ver las opciones", Toast.LENGTH_LONG).show();
     }
+
+
 }
 
