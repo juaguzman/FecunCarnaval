@@ -106,7 +106,8 @@
         android:background="@drawable/f6"
         android:layout_alignTop="@+id/gridLayout"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="340dp" />
+        android:layout_marginTop="340dp"
+        android:layout_alignParentEnd="true" />
 
     <ImageButton
         android:layout_width="wrap_content"

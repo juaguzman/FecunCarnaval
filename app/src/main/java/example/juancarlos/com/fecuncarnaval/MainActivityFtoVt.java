@@ -49,7 +49,7 @@ public class MainActivityFtoVt extends Activity {
     String nom, prueba;
     String rating;
     RequestQueue requestQueue;
-    String insertUrl = "http://192.168.0.26/Festum/insertUsuario.php";
+    String insertUrl = "http://192.168.0.26/Festum/votar.php";
 
 
     @Override
@@ -163,7 +163,7 @@ public void votar()
         protected Map<String, String> getParams() throws AuthFailureError {
             Map<String,String> parameters  = new HashMap<String, String>();
             parameters.put("valor", rating.toString());
-            parameters.put("id_carrosa",prueba.toString());
+            parameters.put("id_carrosa",id_carr.toString());
             parameters.put("foto", nom.toString());
             parameters.put("id_usu", id.toString());
 
