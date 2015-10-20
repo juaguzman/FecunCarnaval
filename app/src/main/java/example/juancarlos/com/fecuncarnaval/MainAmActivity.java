@@ -44,8 +44,8 @@ public class MainAmActivity extends AppCompatActivity implements View.OnClickLis
         imgBtnA4.setOnClickListener(this);
         imgBtnA5 = (ImageButton) findViewById(R.id.imgBtna5);
         imgBtnA5.setOnClickListener(this);
-        //imgBtnA6 = (ImageButton) findViewById(R.id.imgBtna);
-        //imgBtnA6.setOnClickListener(this);
+        imgBtnA6 = (ImageButton) findViewById(R.id.imgbtna6);
+        imgBtnA6.setOnClickListener(this);
 
         imgbtnAap = (ImageButton) findViewById(R.id.imgbtnAap);
         imgbtnAap.setOnClickListener(this);
@@ -106,12 +106,12 @@ public class MainAmActivity extends AppCompatActivity implements View.OnClickLis
                 m.putExtra("fecha", "2016-01-05");
                 startActivity(m);
                 break;
-           // case R.id.imgBtna6:
+           case R.id.imgbtna6:
 
-             //   Intent l = new Intent(this, MainActivityAmigos.class);
-               // l.putExtra("fecha", "2016-01-06");
-               // startActivity(l);
-               // break;
+   Intent l = new Intent(this, MainActivityAmigos.class);
+ l.putExtra("fecha", "2016-01-06");
+ startActivity(l);
+break;
             case R.id.imgBtna29:
 
                 Intent k = new Intent(this, MainActivityAmigos.class);
@@ -120,12 +120,6 @@ public class MainAmActivity extends AppCompatActivity implements View.OnClickLis
                 break;
 
 
-
-            case R.id.imgbtnCf:
-
-                Intent vo = new Intent(this, MainActivity_votacion.class);
-                startActivity(vo);
-                break;
             case (R.id.imgbtnAap):
                 Intent d = new Intent(this, MainActivityAgenda.class);
                 startActivity(d);
