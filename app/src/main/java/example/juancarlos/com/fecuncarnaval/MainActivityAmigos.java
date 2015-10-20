@@ -8,6 +8,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.ListView;
 
+import com.android.volley.RequestQueue;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
@@ -23,6 +24,9 @@ public class MainActivityAmigos extends AppCompatActivity implements View.OnClic
 
     ListView listado;
     String fechass;
+    private int pos;
+    private String id,evento,descripcion,lugar,horaIni,horaFin,categoria,idUsu,fecha;
+    RequestQueue requestQueue;
 
     private ImageButton imgbtnNa;
     private ImageButton imgbtnAa;

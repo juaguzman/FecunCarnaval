@@ -50,7 +50,8 @@ public class MainActivityFamilia extends Activity implements View.OnClickListene
     private int pos;
     private String id,evento,descripcion,lugar,horaIni,horaFin,categoria,idUsu,fecha;
     RequestQueue requestQueue;
-    String insertUrl = "http://192.168.0.26/Festum/insertMiProg.php";
+
+    String insertUrl = "http://festum1.comule.com/getProgramad.php?fecha="+fecha;
 
     private ItemListAdapterProg adapter;
     private List<Programa> listprog;
