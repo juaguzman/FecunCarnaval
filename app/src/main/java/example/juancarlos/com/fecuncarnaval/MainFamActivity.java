@@ -35,7 +35,7 @@ public class MainFamActivity extends AppCompatActivity implements View.OnClickLi
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_fam);
-
+        obtenerIdusu();
         imgBtn28 = (ImageButton) findViewById(R.id.imgBtn28);
         imgBtn28.setOnClickListener(this);
         imgBtn29 = (ImageButton) findViewById(R.id.imgBtn29);
@@ -69,7 +69,7 @@ public class MainFamActivity extends AppCompatActivity implements View.OnClickLi
     @Override
     public void onClick(View v)
     {
-        obtenerIdusu();
+
         switch (v.getId())
         {
             case R.id.imgBtn28:
