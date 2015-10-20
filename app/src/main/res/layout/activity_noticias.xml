@@ -24,49 +24,38 @@
             android:layout_height = "wrap_content"
             android:orientation = "vertical" >
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/imgN1"
-            android:background="@drawable/noti1"
-            android:layout_below="@+id/imgBanN"
-            android:layout_alignParentStart="true"
-            android:layout_marginTop="61dp" />
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/imgN1"
+                android:background="@drawable/noti1" />
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/imgN2"
-            android:background="@drawable/noti2"
-            android:layout_below="@+id/scrollView"
-            android:layout_alignParentStart="true" />
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/imgN2"
+                android:background="@drawable/noti2" />
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/imgN3"
-            android:background="@drawable/noti3"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentStart="true" />
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/imgN3"
+                android:background="@drawable/noti3" />
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/imgN4"
-            android:background="@drawable/noti4"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentStart="true" />
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/imgN4"
+                android:background="@drawable/noti4" />
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/imgN5"
-            android:background="@drawable/noti5"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentStart="true" />
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/imgN5"
+                android:background="@drawable/noti5" />
 
 
-    </LinearLayout>
+        </LinearLayout>
     </ScrollView>
 
     </RelativeLayout>
