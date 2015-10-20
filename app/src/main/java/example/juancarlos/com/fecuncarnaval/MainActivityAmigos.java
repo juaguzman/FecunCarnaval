@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.ContextMenu;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -12,7 +13,12 @@ import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
 import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
 import com.facebook.AccessToken;
 import com.facebook.GraphRequest;
 import com.facebook.GraphResponse;
@@ -25,7 +31,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import cz.msebera.android.httpclient.Header;
 
@@ -36,7 +44,7 @@ public class MainActivityAmigos extends AppCompatActivity implements View.OnClic
     String fechass;
 
     private int pos;
-    private String id,evento,descripcion,lugar,horaIni,horaFin,categoria,idUsu,fecha;
+    private String id, evento, descripcion, lugar, horaIni, horaFin, categoria, idUsu, fecha;
     RequestQueue requestQueue;
 
     String insertUrl = "http://festum1.comule.com/insertMiProg.php";
@@ -53,7 +61,7 @@ public class MainActivityAmigos extends AppCompatActivity implements View.OnClic
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_activity_amigos);
 
-        listado=(ListView) findViewById(R.id.lstVwA);
+        listado = (ListView) findViewById(R.id.lstVwA);
         obtDatos();
 
         imgbtnAa = (ImageButton) findViewById(R.id.imgbtnAa);
@@ -82,14 +90,11 @@ public class MainActivityAmigos extends AppCompatActivity implements View.OnClic
 
         super.onContextItemSelected(item);
 
-        if (item.getTitle()=="Ver descripcion")
-        {
+        if (item.getTitle() == "Ver descripcion") {
             pos = info.position;
             //prueba(pos);
 
-        }
-        else if (item.getTitle()=="Agregar a mi agenda")
-        {
+        } else if (item.getTitle() == "Agregar a mi agenda") {
             //AgregarEvento(pos);
             Toast.makeText(this, "Evento agregado", Toast.LENGTH_LONG).show();
         }
@@ -97,15 +102,14 @@ public class MainActivityAmigos extends AppCompatActivity implements View.OnClic
         return true;
     }
 
-    public void obtDatos()
-    {
-        Bundle bundle=getIntent().getExtras();
+    public void obtDatos() {
+        Bundle bundle = getIntent().getExtras();
         fechass = bundle.getString("fecha");
         AsyncHttpClient client = new AsyncHttpClient();
-        String url = "http://festum1.comule.com/getProgramad.php?fecha="+fechass;
+        String url = "http://festum1.comule.com/getProgramad.php?fecha=" + fechass;
 
         RequestParams parametros = new RequestParams();
-        parametros.put("fecha",fechass.toString());
+        parametros.put("fecha", fechass.toString());
 
         client.post(url, parametros, new AsyncHttpResponseHandler() {
             @Override
@@ -124,19 +128,16 @@ public class MainActivityAmigos extends AppCompatActivity implements View.OnClic
 
     }
 
-    public void obbDatosJSON(String response)
-    {
+    public void obbDatosJSON(String response) {
         obtenerIdusu();
 
-        try
-        {
+        try {
             JSONArray jsonArray = new JSONArray(response);
 
             listprog = new ArrayList<Programa>();
             Programa act;
 
-            for (int i=0; i<jsonArray.length();i++)
-            {
+            for (int i = 0; i < jsonArray.length(); i++) {
                 id = jsonArray.getJSONObject(i).getString("id");
                 fecha = jsonArray.getJSONObject(i).getString("fecha");
                 evento = jsonArray.getJSONObject(i).getString("evento");
@@ -145,7 +146,7 @@ public class MainActivityAmigos extends AppCompatActivity implements View.OnClic
                 horaIni = jsonArray.getJSONObject(i).getString("horaInicio");
                 horaFin = jsonArray.getJSONObject(i).getString("horaFin");
                 categoria = jsonArray.getJSONObject(i).getString("categoria");
-                act = new Programa(id,fecha,evento,descripcion,lugar,horaIni,horaFin,categoria,idUsu);
+                act = new Programa(id, fecha, evento, descripcion, lugar, horaIni, horaFin, categoria, idUsu);
                 listprog.add(act);
 
             }
@@ -153,18 +154,25 @@ public class MainActivityAmigos extends AppCompatActivity implements View.OnClic
             listado.setAdapter(adapter);
             adapter.notifyDataSetChanged();
 
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             e.printStackTrace();
 
         }
 
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        return super.onCreateOptionsMenu(menu);
+    }
 
-    public void obtenerIdusu()
-    {
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        return super.onOptionsItemSelected(item);
+    }
+
+
+    public void obtenerIdusu() {
         GraphRequest request = GraphRequest.newMeRequest(
                 AccessToken.getCurrentAccessToken(),
                 new GraphRequest.GraphJSONObjectCallback() {
@@ -187,13 +195,12 @@ public class MainActivityAmigos extends AppCompatActivity implements View.OnClic
         Bundle parameters = new Bundle();
         parameters.putString("fields", "id,name,email,gender, birthday");
         request.setParameters(parameters);
-        request.executeAsync();    }
+        request.executeAsync();
+    }
 
     @Override
-    public void onClick(View v)
-    {
-        switch (v.getId())
-        {
+    public void onClick(View v) {
+        switch (v.getId()) {
             case (R.id.imgbtnAa):
                 Intent k = new Intent(this, MainActivityAgenda.class);
                 startActivity(k);
@@ -212,4 +219,55 @@ public class MainActivityAmigos extends AppCompatActivity implements View.OnClic
         }
 
     }
+
+    public void AgregarEvento(int pos) {
+        final Programa prog = (Programa) listado.getItemAtPosition(pos);
+
+        StringRequest request = new StringRequest(Request.Method.POST, insertUrl, new Response.Listener<String>() {
+
+
+            @Override
+            public void onResponse(String response) {
+                System.out.println(response.toString());
+            }
+        }, new Response.ErrorListener() {
+
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        }) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> parameters = new HashMap<String, String>();
+                parameters.put("id_prog", prog.getId().toString());
+                parameters.put("fecha", prog.getFecha().toString());
+                parameters.put("evento", prog.getEvento().toString());
+                parameters.put("descripcion", prog.getDescripcion().toString());
+                parameters.put("lugar", prog.getLugar().toString());
+                parameters.put("horaInicio", prog.getHoraIni().toString());
+                parameters.put("horaFin", prog.getHoraFin().toString());
+                parameters.put("categoria", prog.getCategoria().toString());
+                parameters.put("usuario_id", idUsu.toString());
+
+                return parameters;
+            }
+        };
+        requestQueue.add(request);
+    }
+
+    public void prueba(int pos)
+    {
+        Programa prog = (Programa)listado.getItemAtPosition(pos);
+        String ide = prog.getId();
+        Intent ne = new Intent(this, MainActivityDescripcion.class);
+        ne.putExtra("id",ide);
+        startActivity(ne);
+        Toast.makeText(this, "Descripcion", Toast.LENGTH_LONG).show();
+    }
+
+
+
+
 }
+
