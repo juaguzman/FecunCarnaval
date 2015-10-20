@@ -278,7 +278,7 @@ public class MainActivityFamilia extends Activity implements View.OnClickListene
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id)
     {
-        Programa prog = (Programa) parent.getItemAtPosition(position);
+        Toast.makeText(this, "Mantenga presionado para ver las opciones", Toast.LENGTH_LONG).show();
 
     }
 
@@ -289,6 +289,6 @@ public class MainActivityFamilia extends Activity implements View.OnClickListene
         Intent ne = new Intent(this, MainActivityDescripcion.class);
         ne.putExtra("id",ide);
         startActivity(ne);
-        Toast.makeText(this, "Evento agregado", Toast.LENGTH_LONG).show();
+        Toast.makeText(this, "Descripcion", Toast.LENGTH_LONG).show();
     }
 }
