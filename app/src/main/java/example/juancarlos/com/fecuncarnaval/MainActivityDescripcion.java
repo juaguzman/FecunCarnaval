@@ -52,7 +52,7 @@ public class MainActivityDescripcion extends Activity
         Bundle bundle=getIntent().getExtras();
         id = (bundle.getString("id"));
         AsyncHttpClient client = new AsyncHttpClient();
-        String url = "http://festum1.comule.com/getProgramad.php?id="+id;
+        String url = "http://festum1.comule.com/getProgramaId.php?id="+id;
 
         RequestParams params = new RequestParams();
         params.put("id", id.toString());
