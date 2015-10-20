@@ -7,34 +7,55 @@ import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
-import android.widget.BaseAdapter;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+import com.facebook.AccessToken;
+import com.facebook.GraphRequest;
+import com.facebook.GraphResponse;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 
 import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import cz.msebera.android.httpclient.Header;
 
 /**
  * Created by usuario on 12/10/2015.
  */
-public class MainActivityFamilia extends Activity implements View.OnClickListener {
+public class MainActivityFamilia extends Activity implements View.OnClickListener, OnItemClickListener {
 
    private ImageButton imgbtnNf;
     private ImageButton imgbtnAf;
     private ImageButton imgbtnCf;
-    private String id;
+    private int pos;
+    private String id,evento,descripcion,lugar,horaIni,horaFin,categoria,idUsu,fecha;
+    RequestQueue requestQueue;
+    String insertUrl = "http://192.168.0.26/Festum/insertMiProg.php";
 
+    private ItemListAdapterProg adapter;
+    private List<Programa> listprog;
 
-    ListView listado ;
+    ListView listado;
     String fechass;
 
     @Override
@@ -49,8 +70,9 @@ public class MainActivityFamilia extends Activity implements View.OnClickListene
         imgbtnNf.setOnClickListener(this);
         imgbtnCf = (ImageButton) findViewById(R.id.imgbtnCf);
         imgbtnCf.setOnClickListener(this);
-
+        requestQueue = Volley.newRequestQueue(getApplicationContext());
         listado=(ListView) findViewById(R.id.listView);
+        listado.setOnItemClickListener(this);
         obtDatos();
 
         registerForContextMenu(listado);
@@ -67,14 +89,18 @@ public class MainActivityFamilia extends Activity implements View.OnClickListene
     @Override
     public boolean onContextItemSelected(MenuItem item)
     {
+        AdapterView.AdapterContextMenuInfo info =  (AdapterView.AdapterContextMenuInfo) item . getMenuInfo ();
+
         super.onContextItemSelected(item);
         if (item.getTitle()=="Ver descripcion")
         {
-            Intent ne = new Intent(this, MainActivityDescripcion.class);
-            startActivity(ne);
+            pos = info.position;
+                prueba(pos);
+
         }
         else if (item.getTitle()=="Agregar a mi agenda")
         {
+
             Toast.makeText(this, "Evento agregado", Toast.LENGTH_LONG).show();
         }
 
@@ -91,14 +117,14 @@ public class MainActivityFamilia extends Activity implements View.OnClickListene
         String url = "http://festum1.comule.com/getProgramad.php?fecha="+fechass;
 
         RequestParams parametros = new RequestParams();
-        parametros.put("fecha",fechass.toString());
+        parametros.put("fecha", fechass.toString());
 
         client.post(url, parametros, new AsyncHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
                 if (statusCode == 200) {
                     //llamar a la funcion
-                    CargarLista(obbDatosJSON(new String(responseBody)));
+                    obbDatosJSON(new String(responseBody));
                 }
             }
 
@@ -110,30 +136,35 @@ public class MainActivityFamilia extends Activity implements View.OnClickListene
 
     }
 
-    public void CargarLista(ArrayList<String> datos)
-    {
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,datos);
-        listado.setAdapter(adapter);
-    }
 
-    public ArrayList<String> obbDatosJSON(String response)
+    public void obbDatosJSON(String response)
     {
-        ArrayList<String> listado =new ArrayList<String>();
+        obtenerIdusu();
+
         try
         {
             JSONArray jsonArray = new JSONArray(response);
-            String texto;
+
+            listprog = new ArrayList<Programa>();
+            Programa act;
 
             for (int i=0; i<jsonArray.length();i++)
             {
                 id = jsonArray.getJSONObject(i).getString("id");
-                texto=jsonArray.getJSONObject(i).getString("evento") + "\n " +
-                        jsonArray.getJSONObject(i).getString("horaInicio") + "-"+
-                        jsonArray.getJSONObject(i).getString("horaFin") + " ";
-
-                listado.add(texto);
+                fecha = jsonArray.getJSONObject(i).getString("fecha");
+                evento = jsonArray.getJSONObject(i).getString("evento");
+                descripcion = jsonArray.getJSONObject(i).getString("descripcion");
+                lugar = jsonArray.getJSONObject(i).getString("lugar");
+                horaIni = jsonArray.getJSONObject(i).getString("horaInicio");
+                horaFin = jsonArray.getJSONObject(i).getString("horaFin");
+                categoria = jsonArray.getJSONObject(i).getString("categoria");
+                act = new Programa(id,fecha,evento,descripcion,lugar,horaIni,horaFin,categoria,idUsu);
+                listprog.add(act);
 
             }
+            adapter = new ItemListAdapterProg(this, listprog);
+            listado.setAdapter(adapter);
+            adapter.notifyDataSetChanged();
 
         }
         catch (Exception e)
@@ -141,7 +172,7 @@ public class MainActivityFamilia extends Activity implements View.OnClickListene
             e.printStackTrace();
 
         }
-        return listado;
+
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -177,5 +208,87 @@ public class MainActivityFamilia extends Activity implements View.OnClickListene
 
 
 
+    }
+
+
+
+
+    public void obtenerIdusu()
+    {
+        GraphRequest request = GraphRequest.newMeRequest(
+                AccessToken.getCurrentAccessToken(),
+                new GraphRequest.GraphJSONObjectCallback() {
+                    @Override
+                    public void onCompleted(JSONObject object, GraphResponse response) {
+                        // Application code
+                        try {
+
+                            idUsu = String.valueOf(object.get("id"));
+
+
+                            // String email = (String) object.get("email");
+
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                });
+        Bundle parameters = new Bundle();
+        parameters.putString("fields", "id,name,email,gender, birthday");
+        request.setParameters(parameters);
+        request.executeAsync();    }
+
+
+    public void AgregarEvento()
+    {
+        StringRequest request = new StringRequest(Request.Method.POST, insertUrl, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+
+                System.out.println(response.toString());
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        }) {
+
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String,String> parameters  = new HashMap<String, String>();
+                parameters.put("id_prog", id.toString());
+                parameters.put("fecha", fecha.toString());
+                parameters.put("evento",evento.toString());
+                parameters.put("descripcion",descripcion.toString());
+                parameters.put("lugar",lugar.toString());
+                parameters.put("fechaN",fecha.toString());
+                parameters.put("fechaN",fecha.toString());
+                parameters.put("fechaN",fecha.toString());
+                parameters.put("fechaN",fecha.toString());
+
+                return parameters;
+            }
+        };
+        requestQueue.add(request);
+    }
+
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id)
+    {
+        Programa prog = (Programa) parent.getItemAtPosition(position);
+
+    }
+
+    public void prueba(int pos)
+    {
+        Programa prog = (Programa)listado.getItemAtPosition(pos);
+        String ide = prog.getId();
+        Intent ne = new Intent(this, MainActivityDescripcion.class);
+        ne.putExtra("id",ide);
+        startActivity(ne);
+        Toast.makeText(this, "Evento agregado", Toast.LENGTH_LONG).show();
     }
 }

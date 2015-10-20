@@ -75,7 +75,9 @@ public class MainActivityFtoVt extends Activity {
                         Environment.getExternalStorageDirectory(), "FestumCarnaval");
                 imagesFolder.mkdirs();
                 //añadimos el nombre de la imagen
-                 nom = "Carnv" + new Random(999999) + ".jpg";
+                int i1 = (int)(Math.random()*(9999-1))+1;
+                int i2 = (int)(Math.random()*(99999-3))+3;
+                nom = "Carnv" + i1 +i2+ ".jpg";
                 File image = new File(imagesFolder, nom );
                 Uri uriSavedImage = Uri.fromFile(image);
                 //Le decimos al Intent que queremos grabar la imagen

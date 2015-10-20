@@ -28,9 +28,6 @@ public class ListItem extends LinearLayout {
 
 
        img = (ImageView) findViewById(R.id.imgVi);
-
-
-
         img.setImageDrawable(libro.getImg());
     }
 }

@@ -4,6 +4,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/diaf">
 
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -20,8 +21,8 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:id="@+id/txtEventoE"
-        android:layout_alignBottom="@+id/txtEvento"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:layout_alignBottom="@+id/txtEvento" />
 
     <TextView
         android:layout_width="wrap_content"

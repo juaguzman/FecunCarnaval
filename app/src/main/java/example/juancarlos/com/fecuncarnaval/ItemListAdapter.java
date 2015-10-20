@@ -10,13 +10,15 @@ import java.util.List;
 /**
  * Created by JUANCARLOS on 13/10/2015.
  */
-public class ItemListAdapter extends BaseAdapter {
+public class ItemListAdapter extends BaseAdapter
+{
 
     private Activity activity;
     private List<Libro> listLibros;
 
 
-    public ItemListAdapter(Activity activity, List<Libro> listLibros){
+    public ItemListAdapter(Activity activity, List<Libro> listLibros)
+    {
         this.activity = activity;
         this.listLibros = listLibros;
     }

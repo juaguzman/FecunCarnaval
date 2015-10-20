@@ -44,13 +44,15 @@ public class MainActivityDescripcion extends Activity
         txtHoInE = (TextView) findViewById(R.id.txtHoInE);
         txtHoFinE = (TextView) findViewById(R.id.txtFinE);
         txtDesE = (TextView) findViewById(R.id.txtDesE);
+
+        obtDatos();
     }
     public  void obtDatos()
     {
         Bundle bundle=getIntent().getExtras();
         id = (bundle.getString("id"));
         AsyncHttpClient client = new AsyncHttpClient();
-        String url = "http://festum1.comule.com/getDescripcionId.php?id="+id;
+        String url = "http://192.168.0.26/Festum/getDescripcionId.php?id="+id;
 
         RequestParams params = new RequestParams();
         params.put("id", id.toString());
@@ -83,7 +85,7 @@ public class MainActivityDescripcion extends Activity
                  txtEventoE.setText(jsonArray.getJSONObject(i).getString("evento"));
                  txtFechaE.setText(jsonArray.getJSONObject(i).getString("fecha"));
                  txtLugarE.setText(jsonArray.getJSONObject(i).getString("lugar"));
-                 txtHoInE.setText(jsonArray.getJSONObject(i).getString("horaIncio"));
+                 txtHoInE.setText(jsonArray.getJSONObject(i).getString("horaInicio"));
                  txtHoFinE.setText(jsonArray.getJSONObject(i).getString("horaFin"));
                  txtDesE.setText(jsonArray.getJSONObject(i).getString("descripcion"));
              }
