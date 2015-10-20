@@ -49,7 +49,7 @@ public class MainActivityFtoVt extends Activity {
     String nom, prueba;
     String rating;
     RequestQueue requestQueue;
-    String insertUrl = "http://192.168.0.26/Festum/votar.php";
+    String insertUrl = "http://festum1.comule.com/votar.php";
 
 
     @Override
